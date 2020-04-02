@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_172208) do
     t.integer "make_id"
     t.integer "carname_id"
     t.integer "year"
-    t.float "price"
+    t.integer "price"
     t.integer "doors"
     t.string "body_style"
     t.string "vin"

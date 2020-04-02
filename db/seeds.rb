@@ -43,6 +43,8 @@ murci = Vehicle.create(
 
 lambo.vehicles << murci 
 murci.carname = Carname.find_by(name: "Murcielago")
+murci.photos.build(description: "Thumbnail", link_to_photo: "/images/murci.jpg")
+murci.photos.build(description: "Thumbnail", link_to_photo: "/images/murci2.jpg")
 lambo.save
 murci.save
 
@@ -61,6 +63,8 @@ ferrari1 =  Vehicle.create(
 
 ferrari.vehicles << ferrari1
 ferrari1.carname = Carname.find_by(name: "La Ferrari")
+ferrari1.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari.jpg")
+ferrari1.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari2.jpg")
 ferrari.save
 ferrari1.save
 
@@ -79,6 +83,8 @@ avent = Vehicle.create(
 
 lambo.vehicles << avent
 avent.carname = Carname.find_by(name: "Aventador SVJ")
+avent.photos.build(description: "Thumbnail", link_to_photo: "/images/avent.jpg")
+avent.photos.build(description: "Thumbnail", link_to_photo: "/images/avent2.jpg")
 lambo.save
 avent.save
 
@@ -99,3 +105,7 @@ porsche.vehicles << p1
 p1.carname = Carname.find_by(name: "911")
 porsche.save
 p1.save
+
+# Link photos
+
+
