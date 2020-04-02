@@ -1,0 +1,13 @@
+<h1>Andrew's Exotic Cars</h1>
+
+
+<% @vehicles.each do |vehicle| %>
+    <div class='container'>
+        
+        <p><%= vehicle.make.name %>
+        <%= vehicle.carname.name %><p>
+        <p>Year: <%= vehicle.year %>
+        Price: <%= vehicle.price %>
+        Mileage: <%= vehicle.mileage %></p>
+    </div><br />
+<% end %>

@@ -1,2 +1,0 @@
-class CarnameController < ApplicationController
-end

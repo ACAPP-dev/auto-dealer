@@ -1,0 +1,2 @@
+class CarnamesController < ApplicationController
+end
