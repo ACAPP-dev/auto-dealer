@@ -1,0 +1,2 @@
+module CarnameHelper
+end
