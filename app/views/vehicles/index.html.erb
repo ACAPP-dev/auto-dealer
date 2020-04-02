@@ -1,13 +1,16 @@
 <h1>Andrew's Exotic Cars</h1>
 
-
-<% @vehicles.each do |vehicle| %>
-    <div class='container'>
-        
-        <p><%= vehicle.make.name %>
-        <%= vehicle.carname.name %><p>
-        <p>Year: <%= vehicle.year %>
-        Price: <%= vehicle.price %>
-        Mileage: <%= vehicle.mileage %></p>
-    </div><br />
-<% end %>
+<div class='container'>
+    <div class='row row-cols-2'>
+        <% @vehicles.each do |vehicle| %>
+            <div class='col border bg-light'>
+                <p><%= vehicle.make.name %>
+                <%= vehicle.carname.name %></p>    
+                <img class='img-thumbnail' src='/images/murci.jpg'>
+                <p>Price: <%= vehicle.price %></p>
+                <p>Model Year: <%= vehicle.year %></p>
+                <p>Mileage: <%= vehicle.mileage %></p>
+            </div>
+        <% end %>
+    </div>
+</div><br />
