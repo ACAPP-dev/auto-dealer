@@ -4,9 +4,15 @@
     <div class='row row-cols-2'>
         <% @vehicles.each do |vehicle| %>
             <div class='col border bg-light'>
-                <p><%= vehicle.make.name %>
-                <%= vehicle.carname.name %></p>    
-                <img class='img-thumbnail' src='/images/murci.jpg'>
+                <%= link_to vehicle_path(vehicle) do %>
+                    <p><%= vehicle.make.name %>
+                    <%= vehicle.carname.name %></p>
+                <% end %>
+                <% if vehicle.photos.first %>    
+                    <img class='img-thumbnail' src=<%= vehicle.photos.first.link_to_photo %> alt=<%= vehicle.photos.first.description %>>
+                <% else %>
+                    <img class='img-thumbnail' src='/images/andrew.jpg' alt='Missing Photo'>
+                <% end %>
                 <p>Price: <%= vehicle.price %></p>
                 <p>Model Year: <%= vehicle.year %></p>
                 <p>Mileage: <%= vehicle.mileage %></p>
