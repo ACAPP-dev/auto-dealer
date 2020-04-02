@@ -19,7 +19,7 @@ class CreateVehicles < ActiveRecord::Migration[6.0]
       t.integer :mileage_hwy
       t.string :type 
       t.string :options
-      t.boolean :sold
+      t.boolean :sold, default: false
       t.timestamps
     end
   end
