@@ -1,9 +1,11 @@
 
 <div class='container'>
 
-    <form class='form-horizontal center'>
+<form class='form-horizontal center'>
     <%= form_for vehicle do |f| %>
+        <h4>Retail Price: <%= f.number_field :price %></h4>
         <div class='form-row'>
+            <div class='col'>
             <%= f.fields_for :make do |make| %>
                 Select or Create Make:
                 <%= make.text_field :name, list: "makes_autocomplete" %>
@@ -13,7 +15,8 @@
                     <% end %>
                 </datalist>
             <% end %>
-            
+            </div>
+            <div class='col'>
             <%= f.fields_for :carname do |model| %>
                 Select or Create Model:
                 <%= model.text_field :name, list: "carnames_autocomplete" %>
@@ -23,26 +26,68 @@
                     <% end %>
                 </datalist>
             <% end %>
+            </div>
         </div>
-
+        <div class='form-row'>
+            <div class='col'>
+                <%= f.label :year %> <%= f.number_field :year %>
+            </div>
+            <div class='col'>
+                <%= f.label :mileage %> <%= f.number_field :mileage %>
+            </div>
+            <div class='col'>
+                <%= f.label :vin %> <%= f.text_field :vin %>
+            </div>
+        </div>
         <div class='form-group'>
             <%= f.label :description %>
             <%= f.text_area :description, class: 'form-control' %>
         </div>
+        <div class='form-group'>
+            <%= f.label :options %>
+            <%= f.text_area :options, class: 'form-control' %>
+        </div>
+
         <div class='form-row'>
             <div class='col'>
-                <div class='form-group'>
-                    Price: <%= vehicle.price %>
-                </div>
+                <%= f.label :doors %> <%= f.number_field :doors %>
             </div>
             <div class='col'>
-                <div class='form-group'>
-                    Model Year: <%= vehicle.year %>
-                </div>
+                <%= f.label :body_style %> <%= f.text_field :body_style %>
+            </div>
+            <div class='col'>
+                <%= f.label :transmission %> <%= f.text_field :transmission %>
             </div>
         </div>
-                <p>Mileage: <%= vehicle.mileage %></p>
-        
+        <div class='form-row'>
+            <div class='col'>
+                <%= f.label :drivetrain %> <%= f.text_field :drivetrain %>
+            </div>
+            <div class='col'>
+                <%= f.label :fuel_type %> <%= f.text_field :fuel_type %>
+            </div>
+            <div class='col'>
+                <%= f.label :type %> <%= f.text_field :type, placeholder: "New/Used" %>
+            </div>
+        </div>                     
+        <div class='form-row'>
+            <div class='col'>
+                <%= f.label :ext_color %> <%= f.text_field :ext_color %>
+            </div>
+            <div class='col'>
+                <%= f.label :int_color %> <%= f.text_field :int_color %>
+            </div>
+        </div>       
+
+        <div class='form-row'>
+            <div class='col'>
+                <%= f.label :mileage_city %> <%= f.text_field :mileage_city %>
+            </div>
+            <div class='col'>
+                <%= f.label :mileage_hwy %> <%= f.text_field :mileage_hwy %>
+            </div>
+        </div>                  
+        <%= f.submit class: 'btn btn-primary' %>
     <% end %>
 </form>
 
