@@ -1,39 +1,57 @@
 
 <div class='container'>
 
-    <h2 align='center'><%= vehicle.year %> <%= vehicle.make.name %> <%= vehicle.carname.name %></h2>
-    <div class='row'>
-    <div class='col-sm'>
-        <form class='form-horizontal center'>
-            <%= form_for vehicle do |f| %>
-                <div class='form-group'>
-                    <%= f.label :description %>
-                    <%= f.text_area :description, class: 'form-control' %>
-                </div>
-                <div class='form-row'>
-                    <div class='col'>
-                        <div class='form-group'>
-                            Price: <%= vehicle.price %>
-                        </div>
-                    </div>
-                    <div class='col'>
-                        <div class='form-group'>
-                            Model Year: <%= vehicle.year %>
-                        </div>
-                    </div>
-                </div>
-                        <p>Mileage: <%= vehicle.mileage %></p>
-                
+    <form class='form-horizontal center'>
+    <%= form_for vehicle do |f| %>
+        <div class='form-row'>
+            <%= f.fields_for :make do |make| %>
+                Select or Create Make:
+                <%= make.text_field :name, list: "makes_autocomplete" %>
+                <datalist id="makes_autocomplete">
+                    <% @makes.each do |make| %>
+                        <option value="<%=make.name %>">
+                    <% end %>
+                </datalist>
             <% end %>
-        </form>
-    </div>
-    <div class='col-sm'>
-        <% vehicle.photos.each do |photo| %>
-            <img class='img-thumbnail' src=<%= photo.link_to_photo %> alt=<%= photo.description %>>
+            
+            <%= f.fields_for :carname do |model| %>
+                Select or Create Model:
+                <%= model.text_field :name, list: "carnames_autocomplete" %>
+                <datalist id="carnames_autocomplete">
+                    <% @carnames.each do |model| %>
+                        <option value="<%= model.name %>">
+                    <% end %>
+                </datalist>
+            <% end %>
+        </div>
+
+        <div class='form-group'>
+            <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control' %>
+        </div>
+        <div class='form-row'>
+            <div class='col'>
+                <div class='form-group'>
+                    Price: <%= vehicle.price %>
+                </div>
+            </div>
+            <div class='col'>
+                <div class='form-group'>
+                    Model Year: <%= vehicle.year %>
+                </div>
+            </div>
+        </div>
+                <p>Mileage: <%= vehicle.mileage %></p>
+        
+    <% end %>
+</form>
+
+
+<% vehicle.photos.each do |photo| %>
+    <img class='img-thumbnail' src=<%= photo.link_to_photo %> alt=<%= photo.description %>>
 
 
 
-        <% end %>
-    </div>
-    </div>
+<% end %>
+    
 </div>

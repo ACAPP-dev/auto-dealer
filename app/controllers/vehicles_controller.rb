@@ -5,6 +5,30 @@ class VehiclesController < ApplicationController
         @vehicles = Vehicle.all
     end
 
+    def new
+        @vehicle = Vehicle.new
+        @vehicle.build_make
+        @vehicle.build_carname
+        @makes = Make.all
+        @carnames = Carname.all
+    end
+
+    def create
+        raise params.inspect
+    end
+
+    def update
+
+    end
+
+    def destroy
+
+    end
+
+    def edit
+
+    end
+
     def show
         
     end
