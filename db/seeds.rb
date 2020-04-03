@@ -103,9 +103,11 @@ p1 = Vehicle.create(
 
 porsche.vehicles << p1
 p1.carname = Carname.find_by(name: "911")
+p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche.jpg")
+p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche2.jpg")
+p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche3.jpg")
 porsche.save
 p1.save
 
-# Link photos
 
 
