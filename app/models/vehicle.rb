@@ -6,6 +6,6 @@ class Vehicle < ApplicationRecord
 
     accepts_nested_attributes_for :make
     accepts_nested_attributes_for :carname
-    accepts_nested_attributes_for :photos
+    accepts_nested_attributes_for :photos, reject_if: proc {|field| field[:link_to_photo].blank?}
 
 end

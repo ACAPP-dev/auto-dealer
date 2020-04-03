@@ -1,7 +1,5 @@
 
 <div class='container'>
-
-<form class='form-horizontal center'>
     <%= form_for vehicle do |f| %>
         <h4>Retail Price: <%= f.number_field :price %></h4>
         <div class='form-row'>
@@ -78,7 +76,6 @@
                 <%= f.label :int_color %> <%= f.text_field :int_color %>
             </div>
         </div>       
-
         <div class='form-row'>
             <div class='col'>
                 <%= f.label :mileage_city %> <%= f.text_field :mileage_city %>
@@ -86,17 +83,25 @@
             <div class='col'>
                 <%= f.label :mileage_hwy %> <%= f.text_field :mileage_hwy %>
             </div>
-        </div>                  
-        <%= f.submit class: 'btn btn-primary' %>
+        </div>
+        <div class='form-row'>
+           <%= f.label :sold %> <%= f.text_field :sold %>
+        </div>               
+        <h4 align='center'>Link up to Ten Photos</h4>
+        <%= f.fields_for :photos do |photo| %>
+            <div class='form-row'>
+                <div class='col'>
+                    <%= photo.label :description %>
+                    <%= photo.text_field :description %>
+                </div>
+                <div class='col'>
+                    <%= photo.label :link_to_photo %>
+                    <%= photo.text_field :link_to_photo %>
+                </div>
+            </div>
+        <% end %>   
+        <div class='form-row'>
+            <%= f.submit class: 'btn btn-primary' %>
+        </div>
     <% end %>
-</form>
-
-
-<% vehicle.photos.each do |photo| %>
-    <img class='img-thumbnail' src=<%= photo.link_to_photo %> alt=<%= photo.description %>>
-
-
-
-<% end %>
-    
 </div>

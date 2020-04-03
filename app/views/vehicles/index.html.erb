@@ -3,7 +3,8 @@
 <div class='container'>
     <div class='row row-cols-2'>
         <% @vehicles.each do |vehicle| %>
-            <div class='col border bg-light'>
+            
+            <div class='card'>
                 <%= link_to vehicle_path(vehicle) do %>
                     <h4>
                         <%= vehicle.year %>
@@ -16,10 +17,12 @@
                 <% else %>
                     <img class='img-thumbnail' src='/images/andrew.jpg' alt='Missing Photo'>
                 <% end %>
+                <div class='card-body'>
                 <h5>
                     <strong>Price:</strong> <%= "$" + vehicle.price.to_s(:delimited) %>
                     <strong> Mileage:</strong> <%= vehicle.mileage %>
                 </h5>
+                </div>
             </div>
         <% end %>
     </div>
