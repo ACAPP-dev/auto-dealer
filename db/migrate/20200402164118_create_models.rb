@@ -4,8 +4,7 @@ class CreateModels < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.string :features
-      t.integer :make_id
-
+      
       t.timestamps
     end
   end
