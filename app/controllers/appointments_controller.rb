@@ -44,7 +44,7 @@ class AppointmentsController < ApplicationController
 
     def edit 
         if nested_valid_customer?(params[:customer_id].to_i)
-            @customer = get_customer
+            get_customer
             @employees = Employee.all
             if !@appointment = @customer.appointments.find_by(id: params[:id])
                redirect_to root_path

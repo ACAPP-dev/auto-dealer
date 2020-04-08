@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
         render :'/home'
     end
 
-
+    
     def get_customer
         if session[:user_id]
-            @customer = Customer.find(session[:user_id])
+           @customer || @customer = Customer.find(session[:user_id])
         else
             @customer = nil
         end
