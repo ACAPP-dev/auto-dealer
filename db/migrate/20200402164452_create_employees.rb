@@ -9,7 +9,7 @@ class CreateEmployees < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :password_digest
       t.string :phone
-      t.string :type
+      t.string :emp_type
       t.integer :access_level
 
       t.timestamps

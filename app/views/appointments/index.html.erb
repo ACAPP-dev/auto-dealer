@@ -1,0 +1,45 @@
+
+<div class='container w-75'>
+    <h2 align='center'>Current Appointments</h2>
+    <table class='table'>
+        <tr>
+            <th scope='col'>Date</th>
+            <th scope='col'>Time</th>
+            <th scope='col'>Description</th>
+            <th scope='col'>Advisor</th>
+            <th scope='col'>Type</th>
+            <th scope='col'>Options</th>
+        </tr>
+        
+        <% @appointments.each do |appt| %>
+            <tr>
+                <td><%= appt.appt_date %></td>
+                <td><%= Time.parse(appt.appt_time).strftime("%H:%M")%></td>
+                <td><%= appt.description %></td>
+                <td><%= appt.employee.name %></td>
+                <td><%= appt.appt_type %></td>
+                <td><%= link_to "View/Edit/Cancel", edit_customer_appointment_path(appt.customer_id, appt.id), class: 'btn btn-primary' %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>
+
+    <div class='container w-75'>
+        <div class='row'>
+        <div class='card col-md'>
+            <%= link_to new_customer_appointment_path(current_customer, appt_type: 'sales') do %>
+                <h4 align='center'>Make Sales Appointment</h4>
+                <img class='img-fluid' src='/images/key.jpg' alt='key'>
+            <% end %> 
+        </div>
+
+        <div class='card col-md'>
+        <%= link_to new_customer_appointment_path(current_customer, appt_type: 'service') do %>
+            <h4 align='center'>Make Service Appointment</h4>
+            <img class='img-fluid' src='/images/auto_repair2.jpg' alt='repair'>
+            <img class='img-fluid' src='/images/auto_repair.jpg' alt='repair'>
+        <% end %>
+        
+        </div>
+    </div>
+</div>

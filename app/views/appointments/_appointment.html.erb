@@ -1,0 +1,22 @@
+<div class='container w-50'>
+<%= form_for appt do |f| %>
+    <%= hidden_field_tag 'customer_id', appt.customer.id %>
+
+    <p>Appointment Type: <%= f.select :appt_type, [['Sales', 'sales'], ['Service', 'service']] %></p>
+
+    <p>Please Enter Brief Description: <%= f.text_area :description, class: 'form-control' %></p>
+   
+    <p>
+        Date: <%= f.text_field :appt_date, type: 'date' %>
+        Time: <%= f.text_field :appt_time, type: 'time',
+         value: Time.parse(appt.appt_time).strftime("%H:%M"), min: "09:00", max: "18:00" %>
+    </p>
+
+    <p>
+        Select Advisor: <%= f.collection_select :employee_id, @employees, :id, :name %>
+    </p>
+
+    <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+</div>

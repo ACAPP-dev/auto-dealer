@@ -3,7 +3,7 @@ class CreateVehicleSales < ActiveRecord::Migration[6.0]
     create_table :vehicle_sales do |t|
       t.float :cost
       t.float :price
-      t.string :date
+      t.string :sale_date
       t.integer :customer_id
       t.integer :employee_id
 

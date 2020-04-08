@@ -1,0 +1,33 @@
+<head>
+
+<style>
+    body {
+        background-image: url('/images/Carrera_gt.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+</style>
+</head>
+
+<body>
+
+<div class= 'container-sm w-25 right'>
+    <h2 class='text-white' align='center'>Login With</h2>
+    <div align='center'>
+        <%= link_to 'Facebook', login_path, class: 'btn btn-primary' %>
+        <%= link_to 'Google', login_path, class: 'btn btn-info' %>
+    </div>
+</div><br />
+
+<div class='container-md w-50 bg-light rounded'>
+    <div class='row'>
+        <h5 class='col' align='center'>Or Enter Email and Password</h5>
+    </div>
+    <%= form_tag login_path do %>
+        <p class='row col'>Email: <%= text_field_tag :'email' %></p>
+        <p class='row col'>Password: <%= password_field_tag :'password' %></p> 
+        <%= submit_tag "Login", class: 'row col btn btn-primary' %>
+    <% end %>
+</div>
+</body>

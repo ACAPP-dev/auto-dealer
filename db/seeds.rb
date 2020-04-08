@@ -9,22 +9,19 @@
 # Create Makes & Models
 
 porsche = Make.create(name: "Porsche")
-porsche.carnames.build(name: "911")
-porsche.carnames.build(name: "Macan")
-porsche.carnames.build(name: "918 Boxter")
-porsche.save
+Carname.create(name: "911")
+Carname.create(name: "Macan")
+Carname.create(name: "918 Boxter")
 
 ferrari = Make.create(name: "Ferrari")
-ferrari.carnames.build(name: "La Ferrari")
-ferrari.carnames.build(name: "458 Spyder")
-ferrari.carnames.build(name: "F8 Tributo")
-ferrari.save
+Carname.create(name: "La Ferrari")
+Carname.create(name: "458 Spyder")
+Carname.create(name: "F8 Tributo")
 
 lambo = Make.create(name: "Lamborghini")
-lambo.carnames.build(name: "Murcielago")
-lambo.carnames.build(name: "Aventador SVJ")
-lambo.carnames.build(name: "Huracon")
-lambo.save
+Carname.create(name: "Murcielago")
+Carname.create(name: "Aventador SVJ")
+Carname.create(name: "Huracon")
 
 # Create Vehicles
 
@@ -109,5 +106,123 @@ p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche3.jpg")
 porsche.save
 p1.save
 
+# Create Customers
+
+c1 = Customer.create(
+    name: "Sharon Li",
+    address: "3451 W. 35th Street",
+    city: "Los Angeles",
+    state: "CA",
+    zip: "92445",
+    email: "sharon@hotmail.com",
+    password: "1111",
+    password_confirmation: "1111",
+    phone: "445-567-7666"
+)
+
+c2 = Customer.create(
+    name: "Amber Burns",
+    address: "591 S Casita St",
+    city: "Anaheim",
+    state: "CA",
+    zip: "92805",
+    email: "amber123@gmail.com",
+    password: "1111",
+    password_confirmation: "1111",
+    phone: "636-244-2431"
+)
+
+c3 = Customer.create(
+    name: "Jessica Zhang",
+    address: "451 W 235 St, Apt #515",
+    city: "Baltimore",
+    state: "MD",
+    zip: "11234",
+    email: "jessica@gmail.com",
+    password: "1111",
+    password_confirmation: "1111",
+    phone: "123-456-7899"
+)
+
+# Create Employees
+
+e1 = Employee.create(
+    name: "Ed Sheeran",
+    address: "2455 West Los Angeles Blvd",
+    city: "Pico Rivera",
+    state: "CA",
+    zip: "92735",
+    email: "ed@123.com",
+    password: "1111",
+    password_confirmation: "1111",
+    phone: "444-444-4444",
+    emp_type: "service",
+    access_level: "10"
+)
+
+e2 = Employee.create(
+    name: "Andrew Capp",
+    address: "1 Ocean View Dr",
+    city: "Newport Beach",
+    state: "CA",
+    zip: "91111",
+    email: "andrew@gmail.com",
+    password: "1234",
+    password_confirmation: "1234",
+    phone: "321-321-8888",
+    emp_type: "manager",
+    access_level: "100"
+)
+
+e3 = Employee.create(
+    name: "Joshua Kemp",
+    address: "5623 S Pacific Coast Hwy",
+    city: "Laguna Beach",
+    state: "CA",
+    zip: "92832",
+    email: "josh@gmail.com",
+    password: "1111",
+    password_confirmation: "1111",
+    phone: "666-666-6666",
+    emp_type: "sales",
+    access_level: "50"
+)
+
+# Create Appointments
+
+d1 = Date.new(2020, 5, 31)
+t1 = Time.new(2020, 5, 31, 15, 00, 00)
+appt1 = c1.appointments.build(
+    appt_type: "sales",
+    description: "Test drive lambo",
+    appt_date: d1,
+    appt_time: t1
+)
+appt1.employee = e3
+appt1.save
 
 
+t2 = Time.new(2020, 5, 31, 17, 00, 00)
+appt2 = c1.appointments.build(
+    appt_type: "sales",
+    description: "Check out La Ferrari",
+    appt_date: d1,
+    appt_time: t2
+)
+appt2.employee = e3
+appt2.save
+
+d2 = Date.new(2020, 6, 15)
+t3 = Time.new(2020, 6, 15, 10, 30, 00)
+
+appt3 = c2.appointments.build(
+    appt_type: "service",
+    description: "Minor Service McLaren 675LT",
+    appt_date: d2,
+    appt_time: t3
+)
+appt3.employee = e1
+appt3.save
+
+# Create Vehicle Purchases (todo)
+# Create Vehicle Sales (todo)

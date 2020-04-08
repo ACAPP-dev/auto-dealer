@@ -13,9 +13,9 @@
                     </h4>
                 <% end %>
                 <% if vehicle.photos.first %>    
-                    <img class='img-thumbnail' src=<%= vehicle.photos.first.link_to_photo %> alt=<%= vehicle.photos.first.description %>>
+                    <img class='img-fluid' src=<%= vehicle.photos.first.link_to_photo %> alt=<%= vehicle.photos.first.description %>>
                 <% else %>
-                    <img class='img-thumbnail' src='/images/andrew.jpg' alt='Missing Photo'>
+                    <img class='img-fluid' src='/images/andrew.jpg' alt='Missing Photo'>
                 <% end %>
                 <div class='card-body'>
                 <h5>

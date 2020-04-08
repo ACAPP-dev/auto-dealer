@@ -1,0 +1,21 @@
+<div class='container w-50'>
+
+    <h2 align='center'>Appointment Details</h2>
+
+    <p>Appointment Type: <%= @appointment.appt_type %></p>
+
+    <p>Description: <%= @appointment.description %></p>
+   
+    <p>
+        Date: <%= @appointment.appt_date %>
+        Time: <%= @appointment.appt_time %>
+    </p>
+
+    <p>
+        Advisor: <%= @appointment.employee.name %>
+    </p>
+
+    
+
+
+</div>

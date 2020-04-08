@@ -1,0 +1,9 @@
+<h2 align='center'>Change Your Appointment</h2>
+
+<%= render partial: "appointment", locals: {appt: @appointment} %>
+
+<div class='container w-50'>
+    <br />
+    <br />
+    <%= button_to "Cancel Appointment", customer_appointment_path(@appointment.customer.id, @appointment.id), method: :delete, class: 'btn btn-danger' %>
+</div>

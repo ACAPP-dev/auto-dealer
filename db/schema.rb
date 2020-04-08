@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2020_04_02_172208) do
 
   create_table "appointments", force: :cascade do |t|
-    t.string "type"
+    t.string "appt_type"
     t.string "description"
-    t.string "date"
-    t.string "time"
+    t.string "appt_date"
+    t.string "appt_time"
     t.integer "customer_id"
     t.integer "employee_id"
     t.datetime "created_at", precision: 6, null: false
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_172208) do
     t.string "name"
     t.string "description"
     t.string "features"
-    t.integer "make_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_172208) do
     t.string "email"
     t.string "password_digest"
     t.string "phone"
-    t.string "type"
+    t.string "emp_type"
     t.integer "access_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_172208) do
   create_table "vehicle_sales", force: :cascade do |t|
     t.float "cost"
     t.float "price"
-    t.string "date"
+    t.string "sale_date"
     t.integer "customer_id"
     t.integer "employee_id"
     t.datetime "created_at", precision: 6, null: false
