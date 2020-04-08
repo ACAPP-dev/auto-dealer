@@ -15,4 +15,16 @@ class Vehicle < ApplicationRecord
     def self.by_model(model_id)
         where(carname: model_id)
     end
+
+    def self.order_by_price
+        order(price: :asc)
+    end
+
+    def self.order_by_make
+        joins(:make).merge(Make.order(name: :asc))
+    end
+
+    def self.order_by_year
+        order(year: :desc)
+    end
 end

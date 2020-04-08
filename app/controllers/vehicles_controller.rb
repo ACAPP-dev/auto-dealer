@@ -2,11 +2,22 @@ class VehiclesController < ApplicationController
     before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
     def index
-        binding.pry
+        #binding.pry
         if !params[:make].blank?
             @vehicles = Vehicle.by_make(params[:make])
         elsif !params[:carname].blank?
             @vehicles = Vehicle.by_model(params[:carname])
+        elsif !params[:order_by].blank?
+            case params[:order_by]
+            when 'price'
+                @vehicles = Vehicle.order_by_price
+            when 'make'
+                @vehicles = Vehicle.order_by_make
+            when 'year'
+                @vehicles = Vehicle.order_by_year
+            else
+                @vehicles = Vehicle.all
+            end
         else
             @vehicles = Vehicle.all
         end
