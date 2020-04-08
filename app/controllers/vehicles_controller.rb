@@ -3,9 +3,15 @@ class VehiclesController < ApplicationController
 
     def index
         binding.pry
-        @vehicles = Vehicle.all
-        @makes = Make.all
-        @models = Carname.all
+        if !params[:make].blank?
+            @vehicles = Vehicle.by_make(params[:make])
+        elsif !params[:carname].blank?
+            @vehicles = Vehicle.by_model(params[:carname])
+        else
+            @vehicles = Vehicle.all
+        end
+        @makes = Make.vehicle_makes
+        @carnames = Carname.vehicle_models
     end
 
     def new

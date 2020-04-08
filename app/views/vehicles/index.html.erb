@@ -4,14 +4,15 @@
     </div>
     <div class='row'> 
     <%= form_tag(vehicles_path, method: 'get') do %>
-       
-            <%= collection_select @vehicles, :make, @makes, :id, :name %>       
-            <%= submit_tag "Filter by Make" %>
-       
-           
-            <%= collection_select @vehicles, :model, @models, :id, :name %>       
-            <%= submit_tag "Filter by Model" %>
-           
+        <span>Make: 
+            <%= select_tag "make", options_from_collection_for_select(@makes, :id, :name), include_blank: true %>       
+        </span>
+        <span>or Model:      
+            <%= select_tag "carname", options_from_collection_for_select(@carnames, :id, :name), include_blank: true %>       
+        </span>   
+            <%= submit_tag "Filter", class: 'btn btn-success' %>
+        
+        <%= link_to "Order by Price", vehicles_path(order_by: 'price'), class: 'btn btn-success' %>
             <div class='col'>
                 Order by price
             </div>
