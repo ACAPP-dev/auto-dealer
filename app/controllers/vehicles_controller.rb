@@ -2,7 +2,10 @@ class VehiclesController < ApplicationController
     before_action :find_vehicle, only: [:show, :edit, :update, :destroy]
 
     def index
+        binding.pry
         @vehicles = Vehicle.all
+        @makes = Make.all
+        @models = Carname.all
     end
 
     def new

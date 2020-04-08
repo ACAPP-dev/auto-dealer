@@ -1,4 +1,33 @@
+<div class='container'>
+    <div class='row'>
+        Filter Results:
+    </div>
+    <div class='row'> 
+    <%= form_tag(vehicles_path, method: 'get') do %>
+       
+            <%= collection_select @vehicles, :make, @makes, :id, :name %>       
+            <%= submit_tag "Filter by Make" %>
+       
+           
+            <%= collection_select @vehicles, :model, @models, :id, :name %>       
+            <%= submit_tag "Filter by Model" %>
+           
+            <div class='col'>
+                Order by price
+            </div>
+            <div class='col'>
+                Order by make
+            </div>
+            <div class='col'>
+                Order by Year
+            </div>
+    <% end %>  
+        
 
+    </div>
+
+
+</div>
 
 <div class='container'>
     <div class='row row-cols-2'>
