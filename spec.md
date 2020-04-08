@@ -2,9 +2,11 @@
 
 Specs:
 - [x] Using Ruby on Rails for the project
-- [ ] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes) 
-- [ ] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
-- [ ] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+- [x] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes) 
+    Response: Vehicle has_many photos; Customer has_many appointments, vehicle_sales, employees; Employee has_many appointments, vehicles_sales, customers; Make has_many vehicles; Model has_many vehicles.
+- [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+    Response: Vehicle belongs_to make, model; Photo belongs_to vehicle; Appointment belongs_to customers, employees; Vehicle_sale belongs_to customer, employee, vehicle.
+- [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
 - [ ] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
 - [ ] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
 - [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
