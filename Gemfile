@@ -24,6 +24,13 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
 
+# For Facebook Signup / Login
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+# Special Rails Server for Facebook Login
+gem 'thin'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

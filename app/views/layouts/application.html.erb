@@ -40,7 +40,6 @@
             </li>
             <li class='nav-item'>
               <% if logged_in? %>
-              <%= raise current_customer.inspect %>
               <%= link_to "Appointments", customer_appointments_path(current_customer.id), class: 'nav-link active' %>
               <% else %>
               <%= link_to "Appointments", login_path, class: 'nav-link active' %>
@@ -59,8 +58,14 @@
                 <%= button_to 'Logout', logout_path, method: 'delete', class: 'text-white btn btn-link active' %>
               </li>
               <% else %>  
-                <li class='nav-item'>
-                  <%= link_to "Login", login_path, class: 'nav-link active' %>
+                <li class='nav-item dropdown'>
+                  <button class='btn btn-primary dropdown-toggle' id='dropdownMenuLink' type='button' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Login
+                  </button>
+                  <div class='dropdown-menu' aria-labelledby='dropdownMenuLink'>
+                    <%= link_to "Login Via Website", login_path, class: 'dropdown-item' %>
+                    <%= link_to "Login Via Facebook", fb_login_path, class: 'dropdown-item' %>
+                  </div>
                 </li>
                 <li class='nav-item'>
                 <%= link_to "Create Account", new_customer_path, class: 'nav-link active' %> 
