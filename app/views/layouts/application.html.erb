@@ -27,10 +27,11 @@
           <ul class="nav navbar-nav">
             <li class="nav-item">
               <div class='container-fluid'>
-                <form class="form-inline">
+        
+                <%= form_tag(vehicles_path, method: 'get', class: 'form-inline') do %>
                   <input class="form-control mr-sm-2" type="search" placeholder="Search Inventory" aria-label="Search">
                   <button class="active btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <% end %>
               </div>
             </li>
             <li class="nav-item">
@@ -38,6 +39,7 @@
             </li>
             <li class='nav-item'>
               <% if logged_in? %>
+              <%= raise current_customer.inspect %>
               <%= link_to "Appointments", customer_appointments_path(current_customer.id), class: 'nav-link active' %>
               <% else %>
               <%= link_to "Appointments", login_path, class: 'nav-link active' %>

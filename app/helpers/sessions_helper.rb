@@ -4,6 +4,6 @@ module SessionsHelper
     end
 
     def current_customer
-        @customer || @customer = Customer.find_by(id: session[:user_id])
+        @customer = Customer.find_by(id: session[:user_id])
     end
 end

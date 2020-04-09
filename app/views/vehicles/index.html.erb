@@ -2,7 +2,7 @@
     <div class='row'>
         Filter Results:
     </div>
-    <div class='row'> 
+    <div class='row'>
     <%= form_tag(vehicles_path, method: 'get') do %>
         <span>Make: 
             <%= select_tag "make", options_from_collection_for_select(@makes, :id, :name), include_blank: true %>       
@@ -17,11 +17,7 @@
         <%= link_to "Order by Year", vehicles_path(order_by: 'year'), class: 'btn btn-success' %>
         <%= link_to "Remove Filters", vehicles_path, class: 'btn btn-info' %>
     <% end %>  
-        
-
     </div>
-
-
 </div>
 
 <div class='container'>
