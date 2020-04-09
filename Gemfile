@@ -24,9 +24,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
 
-# For Facebook Signup / Login
-gem 'omniauth'
+# For Facebook & Github Signup / Login
+gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-github'
 gem 'dotenv-rails'
 # Special Rails Server for Facebook Login
 gem 'thin'

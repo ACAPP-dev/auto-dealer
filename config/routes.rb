@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/auth/facebook/callback', to: 'sessions#create_fb', as: 'fb_login'
+  get '/auth/github/callback', to: 'sessions#create_git', as: 'git_login'
 
   resources :vehicles
   resources :makes
