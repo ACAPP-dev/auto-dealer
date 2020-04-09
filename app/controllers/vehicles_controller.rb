@@ -4,7 +4,7 @@ class VehiclesController < ApplicationController
     def index
         #binding.pry
         if !params[:search].blank?
-            @vehicles = Vehicle.all.select{|vehicle| vehicle.vehicle_search.downcase.include?(params[:search].downcase)}
+            @vehicles = Vehicle.search_vehicle(params[:search].downcase)
         elsif !params[:make].blank?
             @vehicles = Vehicle.by_make(params[:make])
         elsif !params[:carname].blank?

@@ -8,6 +8,10 @@ class Vehicle < ApplicationRecord
     accepts_nested_attributes_for :carname
     accepts_nested_attributes_for :photos, reject_if: proc {|field| field[:link_to_photo].blank?}
 
+    def self.search_vehicle(search)
+        where("vehicle_search LIKE ?", "%#{search}%")
+    end
+    
     def self.by_make(make_id)
         where(make: make_id)
     end
