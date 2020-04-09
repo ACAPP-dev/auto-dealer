@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_172208) do
   create_table "vehicles", force: :cascade do |t|
     t.integer "make_id"
     t.integer "carname_id"
-    t.integer "year"
+    t.string "year"
     t.integer "price"
     t.integer "doors"
     t.string "body_style"

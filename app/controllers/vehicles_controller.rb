@@ -3,7 +3,9 @@ class VehiclesController < ApplicationController
 
     def index
         #binding.pry
-        if !params[:make].blank?
+        if !params[:search].blank?
+            @vehicles = Vehicle.all.select{|vehicle| params[:search].include?(vehicle.year)}
+        elsif !params[:make].blank?
             @vehicles = Vehicle.by_make(params[:make])
         elsif !params[:carname].blank?
             @vehicles = Vehicle.by_model(params[:carname])

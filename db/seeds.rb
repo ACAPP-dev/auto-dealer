@@ -26,7 +26,7 @@ Carname.create(name: "Huracon")
 # Create Vehicles
 
 murci = Vehicle.create(
-    year: 2007,
+    year: "2007",
     price: 199970,
     doors: 2,
     body_style: "coupe",
@@ -43,10 +43,11 @@ murci.carname = Carname.find_by(name: "Murcielago")
 murci.photos.build(description: "Thumbnail", link_to_photo: "/images/murci.jpg")
 murci.photos.build(description: "Thumbnail", link_to_photo: "/images/murci2.jpg")
 lambo.save
+murci.vehicle_search = "2007 Lamborghini Murcielage"
 murci.save
 
 ferrari1 =  Vehicle.create(
-    year: 2014,
+    year: "2014",
     price: 3495000,
     doors: 2,
     body_style: "coupe",
@@ -63,10 +64,11 @@ ferrari1.carname = Carname.find_by(name: "La Ferrari")
 ferrari1.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari.jpg")
 ferrari1.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari2.jpg")
 ferrari.save
+ferrari1.vehicle_search = "2014 Ferrari La Ferrari"
 ferrari1.save
 
 avent = Vehicle.create(
-    year: 2019,
+    year: "2019",
     price: 559900,
     doors: 2,
     body_style: "coupe",
@@ -83,10 +85,11 @@ avent.carname = Carname.find_by(name: "Aventador SVJ")
 avent.photos.build(description: "Thumbnail", link_to_photo: "/images/avent.jpg")
 avent.photos.build(description: "Thumbnail", link_to_photo: "/images/avent2.jpg")
 lambo.save
+avent.vehicle_search = "2019 Lamborghini Aventador SVJ"
 avent.save
 
 p1 = Vehicle.create(
-    year: 1997,
+    year: "1997",
     price: 795900,
     doors: 2,
     body_style: "coupe",
@@ -104,6 +107,7 @@ p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche.jpg")
 p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche2.jpg")
 p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche3.jpg")
 porsche.save
+p1.vehicle_search = "1997 Porsche 911"
 p1.save
 
 # Create Customers

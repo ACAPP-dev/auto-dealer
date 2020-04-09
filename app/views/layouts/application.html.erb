@@ -29,7 +29,8 @@
               <div class='container-fluid'>
         
                 <%= form_tag(vehicles_path, method: 'get', class: 'form-inline') do %>
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search Inventory" aria-label="Search">
+                  <%= text_field_tag :'search', nil, class:'form-control mr-sm-2', placeholder:"Search Inventory" %>
+                 
                   <button class="active btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 <% end %>
               </div>

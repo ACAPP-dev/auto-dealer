@@ -3,7 +3,7 @@ class CreateVehicles < ActiveRecord::Migration[6.0]
     create_table :vehicles do |t|
       t.integer :make_id
       t.integer :carname_id
-      t.integer :year
+      t.string :year
       t.integer :price
       t.integer :doors
       t.string :body_style
@@ -19,6 +19,7 @@ class CreateVehicles < ActiveRecord::Migration[6.0]
       t.integer :mileage_hwy
       t.string :type 
       t.string :options
+      t.string :vehicle_search
       t.boolean :sold, default: false
       t.timestamps
     end
