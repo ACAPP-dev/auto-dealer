@@ -43,7 +43,7 @@ murci.carname = Carname.find_by(name: "Murcielago")
 murci.photos.build(description: "Thumbnail", link_to_photo: "/images/murci.jpg")
 murci.photos.build(description: "Thumbnail", link_to_photo: "/images/murci2.jpg")
 lambo.save
-murci.vehicle_search = "2007 Lamborghini Murcielage"
+murci.vehicle_search = "2007 Lamborghini Murcielago"
 murci.save
 
 ferrari1 =  Vehicle.create(

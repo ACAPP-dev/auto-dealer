@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_172208) do
     t.integer "mileage_hwy"
     t.string "type"
     t.string "options"
+    t.string "vehicle_search"
     t.boolean "sold", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
