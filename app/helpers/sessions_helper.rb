@@ -12,7 +12,7 @@ module SessionsHelper
     end
 
     def current_employee
-        @employee = Employee.find_by(id: session[:user_id])
+        @employee = Employee.find_by(id: session[:empl_id])
     end
 
 

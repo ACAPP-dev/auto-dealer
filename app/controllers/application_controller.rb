@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
     end
 
     def get_employee
-        if session[:user_id]
-           @employee || @employee = Employee.find(session[:user_id])
+        if session[:empl_id]
+           @employee || @employee = Employee.find(session[:empl_id])
         else
             @employee = nil
         end
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
     def valid_employee?
         if get_employee
-            @employee.id == session[:user_id]
+            @employee.id == session[:empl_id]
         end
     end
 end
