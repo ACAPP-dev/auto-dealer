@@ -35,6 +35,8 @@ class Admin::VehiclesController < ApplicationController
         if @vehicle.update(vehicle_params)
             redirect_to admin_vehicle_path(@vehicle), notice: "Updates were saved!!"
         else
+            @makes = Make.all
+            @carnames = Carname.all
             render :edit
         end
     end
@@ -61,8 +63,8 @@ class Admin::VehiclesController < ApplicationController
 
     def vehicle_params
         params.require(:vehicle).permit(
-            {make_attributes: [:name]},
-            {carname_attributes: [:name]},
+            {make_attributes: [:id, :name]},
+            {carname_attributes: [:id, :name]},
             :year,
             :price,
             :doors,

@@ -1,7 +1,7 @@
 <% if vehicle.errors.any? %>
     <div class="alert alert-danger">
     <h2>
-        <%= pluralize(appt.errors.count, "Error") %>
+        <%= pluralize(vehicle.errors.count, "Error") %>
         prohibited the vehicle update from being saved:
     </h2>
 
@@ -19,13 +19,8 @@
         <div class='form-row'>
             <div class='col'>
             <%= f.fields_for :make do |make| %>
-                Select or Create Make:
-                <%= make.text_field :name, list: "makes_autocomplete" %>
-                <datalist id="makes_autocomplete">
-                    <% @makes.each do |make| %>
-                        <option value="<%=make.name %>">
-                    <% end %>
-                </datalist>
+                Select Make:
+                <%= make.collection_select :id, @makes, :id, :name, include_blank: "select one..." %>
             <% end %>
             </div>
             <div class='col'>
@@ -33,8 +28,8 @@
                 Select or Create Model:
                 <%= model.text_field :name, list: "carnames_autocomplete" %>
                 <datalist id="carnames_autocomplete">
-                    <% @carnames.each do |model| %>
-                        <option value="<%= model.name %>">
+                    <% @carnames.each do |option_model| %>
+                        <option value="<%= option_model.name %>">
                     <% end %>
                 </datalist>
             <% end %>

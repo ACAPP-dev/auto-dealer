@@ -1,5 +1,4 @@
 class Carname < ApplicationRecord
-    #belongs_to :make
     has_many :vehicles
 
     def self.vehicle_models
