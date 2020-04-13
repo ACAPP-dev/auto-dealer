@@ -7,10 +7,10 @@ class AppointmentsController < ApplicationController
 
     def new
         if nested_valid_customer?(params[:customer_id].to_i)
-            @appointment = get_customer.appointments.build(appt_type: params[:appt_type], appt_time: Time.new(2020, 04, 15, 10, 00, 00))
+            @appointment = get_customer.appointments.build(appt_type: params[:appt_type], appt_time: Time.new(2000))
             @employees = Employee.all
         else
-            redirect_to root_path
+            redirect_to root_path, alert: "Please login to make an appointment."
         end
     end
 
@@ -18,12 +18,13 @@ class AppointmentsController < ApplicationController
         if nested_valid_customer?(params[:customer_id].to_i)
             @appointment = get_customer.appointments.build(appt_params)
             if @appointment.save
-                redirect_to customer_appointments_path(@appointment.customer)
+                redirect_to customer_appointments_path(@appointment.customer), notice: "Successfully created appointment!"
             else
+                @employees = Employee.all
                 render :new
             end
         else
-            redirect_to root_path
+            redirect_to root_path, alert: "Please login to make an appointment."
         end
     end
 
@@ -31,14 +32,15 @@ class AppointmentsController < ApplicationController
         if nested_valid_customer?(params[:customer_id].to_i)
             @appointments = get_customer.appointments.all
         else
-            redirect_to login_path
+            flash.now[:alert] = "Test - NEED TO LOGIN"
+            redirect_to login_url, alert: "Please login to view appointments."
         end
     end
 
     def show
         if !nested_valid_customer?(params[:customer_id].to_i) ||
             !get_customer.appointments.include?(@appointment)
-            redirect_to root_path
+            redirect_to root_path, alert: "Please login to view appointments."
         end
     end
 
@@ -47,10 +49,10 @@ class AppointmentsController < ApplicationController
             get_customer
             @employees = Employee.all
             if !@appointment = @customer.appointments.find_by(id: params[:id])
-               redirect_to root_path
+               redirect_to root_path, alert: "Please login to change appointments."
             end
         else
-            redirect_to root_path
+            redirect_to root_path, alert: "Please login to change appointments."
         end
     end
 
@@ -58,12 +60,13 @@ class AppointmentsController < ApplicationController
         if nested_valid_customer?(@appointment.customer_id) &&
             get_customer.appointments.include?(@appointment)
             if @appointment.update(appt_params)
-                redirect_to customer_appointment_path(get_customer.id, @appointment)
+                redirect_to customer_appointment_path(get_customer.id, @appointment), notice: "Successfully updated appointment!"
             else
+                @employees = Employee.all
                 render :'edit'
             end
         else
-            redirect_to root_path
+            redirect_to root_path, alert: "Please login to change appointments."
         end
     end
 
@@ -71,9 +74,9 @@ class AppointmentsController < ApplicationController
         if nested_valid_customer?(@appointment.customer_id) &&
             get_customer.appointments.include?(@appointment)
             if @appointment.delete
-                redirect_to customer_appointments_path(get_customer.id)
+                redirect_to customer_appointments_path(get_customer.id), notice: "Your appointment was successfully cancelled."
             else
-                redirect_to root_path
+                redirect_to root_path, alert: "Please login to cancel appointments."
             end
         end
     end

@@ -39,8 +39,12 @@
         </div>
 
         <div>
-            <h4 class='text-danger'>Options (make list of items)</h4>
-            <%=@vehicle.options %>
+            <h4>Options</h4>
+            <ul>
+                <% @options.each do |option| %>
+                    <li><%= option.capitalize %></li>
+                <% end %>
+            </ul>
         </div>
         <h4>Price: <%= "$" + @vehicle.price.to_s(:delimited) %></h4>
 

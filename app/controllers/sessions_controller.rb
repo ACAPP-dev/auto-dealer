@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         #binding.pry
         if @customer && @customer.validate(params[:password])
             session[:user_id] = @customer.id 
-            redirect_to root_path
+            redirect_to root_path, message: "Login Successful!"
         else
             render :new
         end

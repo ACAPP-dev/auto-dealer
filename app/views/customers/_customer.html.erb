@@ -1,0 +1,50 @@
+<head>
+<style>
+    body {
+        background-image: url('/images/Carrera_gt.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+</head>
+
+<body>
+
+<% if customer.errors.any? %>
+    <div class="alert alert-danger">
+    <h2>
+        <%= pluralize(customer.errors.count, "Error") %>
+        prohibited this account from being saved:
+    </h2>
+ 
+    <ul>
+        <% customer.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+    </div>
+<% end %>
+
+<div class='container-md w-75 bg-light rounded'>
+    
+    <%= form_for customer do |f| %>
+            <span class='row col'>Full Name: <%= f.text_field :name, class: 'form-control'%></span>
+            <p class='row col'>Street Address: <%= f.text_field :address, class: 'form-control' %></p>
+            <div class='row'>
+                <p class='col'>City: <%= f.text_field :city %></p>
+                <p class='col'>State: <%= f.text_field :state %></p>
+                <p class='col'>Zip: <%= f.text_field :zip %></p>
+            </div>
+            <div class='row'>
+                <span class='col'>Email: <%= f.text_field :email %></span>
+                <p class='col'>Phone: <%= f.text_field :phone %></p>
+            </div>
+            <div class='row'>
+                <span class='col'>Password: <%= f.password_field :password %></span>
+                <span class='col'>Re-enter Password: <%= f.password_field :password_confirmation %></span>
+            </div>
+            <%= f.submit class: 'row col btn btn-primary' %>
+        </div>
+    <% end %>
+</div>
+</body>

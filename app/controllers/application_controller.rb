@@ -22,4 +22,18 @@ class ApplicationController < ActionController::Base
     def nested_valid_customer?(cust_id)
         cust_id == session[:user_id]
     end
+
+    def get_employee
+        if session[:user_id]
+           @employee || @employee = Employee.find(session[:user_id])
+        else
+            @employee = nil
+        end
+    end
+
+    def valid_employee?
+        if get_employee
+            @employee.id == session[:user_id]
+        end
+    end
 end

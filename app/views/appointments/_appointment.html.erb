@@ -1,20 +1,40 @@
+
+<% if appt.errors.any? %>
+    <div class="alert alert-danger">
+    <h2>
+        <%= pluralize(appt.errors.count, "Error") %>
+        prohibited this appointment from being saved:
+    </h2>
+
+    <ul>
+        <% appt.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+    </div>
+<% end %>
+
 <div class='container w-50'>
 <%= form_for appt do |f| %>
     <%= hidden_field_tag 'customer_id', appt.customer.id %>
 
-    <p>Appointment Type: <%= f.select :appt_type, [['Sales', 'sales'], ['Service', 'service']] %></p>
+    <div class='row form-group'>
+        <span>Appointment Type: </span>
+        <span><%= f.select :appt_type, [['Sales', 'sales'], ['Service', 'service']] %></span>
+        
+    </div>
 
-    <p>Please Enter Brief Description: <%= f.text_area :description, class: 'form-control' %></p>
+    <div class='row form-group'>Please Enter Brief Description: <%= f.text_area :description, class: 'form-control' %></div>
    
-    <p>
-        Date: <%= f.text_field :appt_date, type: 'date' %>
-        Time: <%= f.text_field :appt_time, type: 'time',
-         value: Time.parse(appt.appt_time).strftime("%H:%M"), min: "09:00", max: "18:00" %>
-    </p>
+    <div class='row form-group'>
+        <span>Date: <%= f.text_field :appt_date, type: 'date' %></span>
+        <span>Time: <%= f.text_field :appt_time, type: 'time',
+         value: Time.parse(appt.appt_time).strftime("%H:%M"), min: "09:00", max: "18:00" %></span>
+    </div>
 
-    <p>
-        Select Advisor: <%= f.collection_select :employee_id, @employees, :id, :name %>
-    </p>
+    <div class='row form-group'>
+        <p>Select Advisor: <%= f.collection_select :employee_id, @employees, :id, :name %></p>
+    </div>
 
     <%= f.submit class: 'btn btn-primary' %>
 <% end %>

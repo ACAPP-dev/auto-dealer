@@ -1,2 +1,0 @@
-class MakesController < ApplicationController
-end

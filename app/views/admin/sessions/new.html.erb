@@ -1,0 +1,20 @@
+<head>
+
+
+</head>
+
+<body>
+
+
+
+<div class='container-md w-50 bg-light rounded'>
+    <h5 class='col' align='center'>Employee Login</h5>
+    <h5 class='col' align='center'>Enter Email and Password</h5>
+    
+    <%= form_tag admin_login_path do %>
+        <p class='row col'>Email: <%= text_field_tag :'email' %></p>
+        <p class='row col'>Password: <%= password_field_tag :'password' %></p> 
+        <%= submit_tag "Login", class: 'row col btn btn-primary' %>
+    <% end %>
+</div>
+</body>

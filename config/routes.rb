@@ -10,18 +10,26 @@ Rails.application.routes.draw do
   get '/auth/facebook' , as: 'fb_login'
   get '/auth/facebook/callback', to: 'sessions#create_fb'
 
-
   resources :vehicles
-  resources :makes
-  resources :carnames
-  resources :photos
+  resources :appointments
+  resources :sessions
   
   resources :customers do
     resources :appointments
   end
 
-  resources :employees
-  resources :appointments
-  resources :sessions
-  
+  namespace :admin do
+    resources :makes
+    resources :carnames
+    resources :photos
+    resources :employees
+    resources :sessions
+    resources :menus, only: [:index]
+
+    get '/login', to: 'sessions#new'
+    post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
+
+  end
+
 end

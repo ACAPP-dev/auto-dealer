@@ -12,11 +12,15 @@ porsche = Make.create(name: "Porsche")
 Carname.create(name: "911")
 Carname.create(name: "Macan")
 Carname.create(name: "918 Boxter")
+Carname.create(name: "Panamera")
 
 ferrari = Make.create(name: "Ferrari")
 Carname.create(name: "La Ferrari")
 Carname.create(name: "458 Spyder")
 Carname.create(name: "F8 Tributo")
+Carname.create(name: "FF")
+Carname.create(name: "F430")
+
 
 lambo = Make.create(name: "Lamborghini")
 Carname.create(name: "Murcielago")
@@ -67,6 +71,55 @@ ferrari.save
 ferrari1.vehicle_search = "2014 Ferrari La Ferrari"
 ferrari1.save
 
+ferrari2 =  Vehicle.create(
+    year: "2012",
+    price: 135980,
+    doors: 2,
+    body_style: "coupe",
+    description: "2012 Ferrari FF in Bianco Avus with 18,679 miles",
+    mileage: 18679,
+    ext_color: "Bianco Avus",
+    int_color: "Nero",
+    mileage_city: 11,
+    mileage_hwy: 17,
+    options: "SPORT DIAMOND FORGED WHEELS ($7555.00), VENTILATED FULL POWER-ADJUSTABLE FRONT SEATS ($7240.00), CARBON FIBER STEERING WHEEL ($4800.00), REAR PARKING CAMERA ($3463.00), FENDER FERRARI SHIELDS ($1590.00), FRONT GRILLE W/CHROME EDGES ($1574.00), PARKING SENSORS ($1494.00), BRAKE CALIPERS IN ALUMINUM GRAY ($1417.00), WHITE TACHOMETER ($916.00), SPORT EXHAUST PIPES ($708.00)")
+
+ferrari.vehicles << ferrari2
+ferrari2.carname = Carname.find_by(name: "FF")
+ferrari2.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari3.jpg")
+ferrari2.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari4.jpg")
+ferrari2.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari5.jpg")
+ferrari2.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari6.jpg")
+ferrari2.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari7.jpg")
+ferrari2.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari8.jpg")
+ferrari.save
+ferrari2.vehicle_search = "2012 Ferrari FF"
+ferrari2.save
+
+ferrari3 =  Vehicle.create(
+    year: "2007",
+    price: 99980,
+    doors: 2,
+    body_style: "coupe",
+    description: "2007 Ferrari F430 in Nurburgring Silver Metallic with 20,254 miles",
+    mileage: 20254,
+    ext_color: "Nurburgring Silver",
+    int_color: "Black",
+    mileage_city: 13,
+    mileage_hwy: 17,
+    options: "DAYTONA STYLE SEATS ($2755.00), LEATHER REAR WALL ($2181.00), HI-FI SOUND SYSTEM ($2063.00), SCUDERIA FERRARI FENDER SHIELDS ($1518.00), REAR PARKING SENSORS ($1114.00), RED BRAKE CALIPERS ($899.00), ALL STITCHING IN COLOR ($321.00), 4 NEW MICHELIN PILOT SPORT 4S TIRES ($1159.96), REAR BREMBO BRAKE PADS & ROTORS JUST REPLACED ($480.23), FRESHLY POWDER COATED REAR WHEELS, INTERIOR DOOR PULLS & BUTTONS REFINISHED (no sticky buttons)")
+
+ferrari.vehicles << ferrari3
+ferrari3.carname = Carname.find_by(name: "F430")
+ferrari3.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari9.jpg")
+ferrari3.photos.build(description: "Thumbnail", link_to_photo: "/images/ferrari10.jpg")
+ferrari.save
+ferrari3.vehicle_search = "2007 Ferrari F430"
+ferrari3.save
+
+
+
+
 avent = Vehicle.create(
     year: "2019",
     price: 559900,
@@ -109,6 +162,57 @@ p1.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche3.jpg")
 porsche.save
 p1.vehicle_search = "1997 Porsche 911"
 p1.save
+
+p2 = Vehicle.create(
+    year: "2014",
+    price: 129980,
+    doors: 2,
+    body_style: "coupe",
+    description: "2014 Porsche 911 Turbo S in Agate Grey Metallic with 3,665 miles",
+    mileage: 3665,
+    ext_color: "Agate Gray Metallic",
+    int_color: "Espresso/Cognac",
+    mileage_city: 17,
+    mileage_hwy: 24,
+    options: "ADAPTIVE CRUISE CONTROL W/PORSCHE ACTIVE SAFE, BURMESTER HIGH-END SURROUND SOUND-SYSTEM *PRICE TO FOLLOW, ESPRESSO/COGNAC NATURAL LEATHER SEAT TRIM, FIRE EXTINGUISHER, LIGHT DESIGN PACKAGE, MAHOGANY INTERIOR PACKAGE, 
+    MAHOGANY MULTIFUNCTION STEERING WHEEL, PORSCHE ENTRY, REAR WIPER, SEAT BELTS IN YACHTING BLUE, SEAT VENTILATION, TELEPHONE MODULE, VOICE CONTROL")
+
+porsche.vehicles << p2
+p2.carname = Carname.find_by(name: "911")
+p2.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche4.jpg")
+p2.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche5.jpg")
+p2.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche6.jpg")
+porsche.save
+p2.vehicle_search = "2014 Porsche 911"
+p2.save
+
+
+p3 = Vehicle.create(
+    year: "2018",
+    price: 118950,
+    doors: 4,
+    body_style: "hatchback",
+    description: "2018 Porsche Panamera Turbo in Sapphire Blue Metallic with 4,408 miles. This vehicle comes with original books and two keys.",
+    mileage: 4408,
+    ext_color: "Sappire Blue Metallic",
+    int_color: "Black",
+    mileage_city: 18,
+    mileage_hwy: 25,
+    options: "SPORT PACKAGE ($5580.00),ASSISTANCE PACKAGE ($5370.00), PORSCHE DYNAMIC CHASSIS CONTROL SPORT (PDCC SPORT) ($5000.00), PREMIUM PACKAGE PLUS ($2790.00), PANAMERA SPORTDESIGN WHEELS IN EXT COLOR ($3920.00), INTERIOR PACKAGE IN EXTERIOR COLOR ($1170.00), FRONT & REAR PARKASSIST W/SURROUND VIEW ($1200.00), TINTED LED TAILLIGHTS w/ ADAPTIVE BRAKE LIGHTS ($840.00), WINDOW TRIM IN HIGH-GLOSS BLACK ($590.00), AIR OUTLET GRILLES PAINTED IN HIGH-GLOSS BLACK ($570.00), EXTERIOR MIRRORS PAINTED IN HIGH-GLOSS BLACK ($550.00), AMBIENT LIGHTING ($500.00), DOOR HANDLES PAINTED IN HIGH-GLOSS BLACK ($350.00), HEATED STEERING WHEEL ($280.00), MODEL DESIGNATION PAINTED ($220.00), RETRACTABLE LUGGAGE COMPARTMENT COVER ($150.00)")
+
+porsche.vehicles << p3
+p3.carname = Carname.find_by(name: "Panamera")
+p3.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche7.jpg")
+p3.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche8.jpg")
+p3.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche9.jpg")
+porsche.save
+p3.vehicle_search = "2018 Porsche Panamera"
+p3.save
+
+
+
+
+
 
 # Create Customers
 
@@ -194,8 +298,8 @@ e3 = Employee.create(
 
 # Create Appointments
 
-d1 = Date.new(2020, 5, 31)
-t1 = Time.new(2020, 5, 31, 15, 00, 00)
+d1 = "2020-05-31"
+t1 = "15:00"
 appt1 = c1.appointments.build(
     appt_type: "sales",
     description: "Test drive lambo",
@@ -205,24 +309,24 @@ appt1 = c1.appointments.build(
 appt1.employee = e3
 appt1.save
 
-
-t2 = Time.new(2020, 5, 31, 17, 00, 00)
+d2 = "2020-06-01"
+t2 = "17:00"
 appt2 = c1.appointments.build(
     appt_type: "sales",
     description: "Check out La Ferrari",
-    appt_date: d1,
+    appt_date: d2,
     appt_time: t2
 )
 appt2.employee = e3
 appt2.save
 
-d2 = Date.new(2020, 6, 15)
-t3 = Time.new(2020, 6, 15, 10, 30, 00)
+d3 = Date.new(2020, 6, 15)
+t3 = "10:30"
 
 appt3 = c2.appointments.build(
     appt_type: "service",
     description: "Minor Service McLaren 675LT",
-    appt_date: d2,
+    appt_date: d3,
     appt_time: t3
 )
 appt3.employee = e1

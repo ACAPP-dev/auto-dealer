@@ -1,1 +1,47 @@
-This is the home view...
+<div class='container'>
+    <div class='row d-flex justify-content-center align-items-center min-vh-50' >
+        <div class='card-deck'>
+            <%= link_to vehicles_path, class:'card bg-secondary text-white' do %>
+                <div class="card-body">
+                    <h5 class="card-title">View Inventory</h5>
+                    <p class="card-text">View our entire inventory.</p>
+                </div>
+            <% end %>
+
+            <% if logged_in? %>
+                <%= link_to customer_appointments_path(current_customer.id), class: 'card bg-danger text-white' do %>
+                    <div class="card-body">
+                        <h5 class="card-title">Appointments</h5>
+                        <p class="card-text">Make a service appointment or view / change existing appointments.</p>
+                    </div>
+                <% end %>
+            <% else %>
+                <%= link_to login_path, class: 'card bg-danger text-white' do %>
+                    <div class="card-body">
+                        <h5 class="card-title">Appointments</h5>
+                        <p class="card-text">Log-in to make a service appointment or view / change existing appointments.</p>
+                    </div>
+                <% end %>   
+            <% end %>
+
+            <%= link_to vehicles_path, class:'card bg-warning text-white' do %>
+                <div class="card-body">
+                    <h5 class="card-title">About Us</h5>
+                    <p class="card-text">Hours of operation and contact info.</p>
+                </div>
+            <% end %>
+
+            <%= link_to vehicles_path, class:'card bg-success text-white' do %>
+                <div class="card-body">
+                    <h5 class="card-title">Directions</h5>
+                    <p class="card-text">Map and directions to our dealership.</p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+
+    <iframe width='100%' height='650px' src="https://www.youtube.com/embed/E0zsKsSBBwE?autoplay=0&controls=0&showinfo=0&autohide=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+</div>

@@ -1,3 +1,28 @@
-Show View
+<div class='container w-50'>
 
-@customer.name
+    <h2 align='center'>Account Details</h2>
+
+    <% if @customer.uid.blank? %>
+        <p>Account Type: Website Account</p>
+    <% else %>
+        <p>Account Type: Facebook Login</p>
+    <% end %>
+
+    <p>Name: <%= @customer.name %></p>
+
+    <p>Address: <%= @customer.address %></p>
+   
+    <p>
+        City: <%= @customer.city %>
+        State: <%= @customer.state %>
+        Zip: <%= @customer.zip %>
+    </p>
+
+    <p>
+        Email: <%= @customer.email %>
+        Phone: <%= @customer.phone %>
+    </p>
+
+    <%= link_to "Edit Account Details or Change Password", edit_customer_path(@customer), class: 'btn btn-primary' %>
+    
+</div>

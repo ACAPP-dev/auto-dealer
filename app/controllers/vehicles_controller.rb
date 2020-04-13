@@ -67,7 +67,7 @@ class VehiclesController < ApplicationController
     end
 
     def show
-        
+        @options = @vehicle.options.split(", ")
     end
 
 

@@ -2,7 +2,8 @@ class CustomersController < ApplicationController
 
     before_action :get_customer, only: [:show, :edit, :update, :destroy]
     # get_customer method is in application_controller
-    
+    #before_action :skip_password_attribute, only: :update
+
     def new
         @customer = Customer.new
     end
@@ -11,9 +12,9 @@ class CustomersController < ApplicationController
         @customer = Customer.new(cust_params)
         if @customer.save
             session[:user_id] = @customer.id
-            redirect_to root_path
+            redirect_to customer_path(@customer), notice: "Successfully Created Account!"
         else
-            render :signup
+            render :new
         end
     end
 
@@ -24,6 +25,16 @@ class CustomersController < ApplicationController
     end
 
     def update
+        if valid_customer?
+            if @customer.update(skip_password_attribute)
+                redirect_to customer_path(@customer), notice: "Successfully Updated Account!"
+            else
+                render :edit
+
+            end
+        else
+            redirect_to root_path, alert: "Please login to update your account."
+        end
     end
 
     def destroy
@@ -31,9 +42,15 @@ class CustomersController < ApplicationController
 
     private
 
+    def skip_password_attribute
+        if params[:customer][:password].blank? && params[:customer][:password_confirmation].blank?
+            cust_params.except(:password, :password_confirmation)
+        else
+            cust_params
+        end
+    end
     
-
     def cust_params
         params.require(:customer).permit(:name, :address, :city, :state, :zip, :email, :password, :password_confirmation, :phone)
-    end
+    end  
 end
