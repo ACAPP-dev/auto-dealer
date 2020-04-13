@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/auth/facebook' , as: 'fb_login'
   get '/auth/facebook/callback', to: 'sessions#create_fb'
 
-  resources :vehicles
+  resources :vehicles, only: [:index, :show]
   resources :appointments
   resources :sessions
   
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :vehicles
     resources :makes
     resources :carnames
     resources :photos

@@ -1,0 +1,61 @@
+<div class='container'>
+
+    <h2 align='center'><%= @vehicle.year %> <%= @vehicle.make.name %> <%= @vehicle.carname.name %></h2>
+    <div class='row'>
+    <div class='col-sm'>
+        <div>
+            <h4>About This Vehicle</h4>
+            <%=@vehicle.description %>
+        </div>
+        <div>
+            <strong>Stock #:</strong>
+            <%= @vehicle.id %>
+        </div>
+        <div>
+            <strong>VIN:</strong>
+            <%= @vehicle.vin %>
+        </div>
+        <div>
+            <%= @vehicle.doors %> Door
+            <%= @vehicle.body_style.capitalize %>
+            <%= @vehicle.transmission %>
+            <%= @vehicle.fuel_type %>
+        </div>
+        <div>
+            <strong>Mileage:</strong>
+            <%= @vehicle.mileage %>
+        </div>
+        <div>
+            <strong>Exterior Color:</strong>
+            <%= @vehicle.ext_color %>
+        </div>
+        <div>
+            <strong>Interior Color:</strong>
+            <%= @vehicle.int_color %>
+        </div>
+        <div>
+            <strong>Gas Mileage:</strong>
+            City <%= @vehicle.mileage_city %> / Hwy <%= @vehicle.mileage_hwy %>
+        </div>
+
+        <div>
+            <h4>Options</h4>
+            <ul>
+                <% @options.each do |option| %>
+                    <li><%= option.capitalize %></li>
+                <% end %>
+            </ul>
+        </div>
+        <h4>Price: <%= "$" + @vehicle.price.to_s(:delimited) %></h4>
+
+        <%= link_to "Edit Vehicle Details", edit_admin_vehicle_path(@vehicle), class:"btn btn-primary" %>
+
+
+    </div>
+    <div class='col-sm'>
+        <% @vehicle.photos.each do |photo| %>
+            <img class='img-thumbnail' src=<%= photo.link_to_photo %> alt=<%= photo.description %>>
+        <% end %>
+    </div>
+    </div>
+</div>
