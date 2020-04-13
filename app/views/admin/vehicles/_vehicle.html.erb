@@ -1,3 +1,17 @@
+<% if vehicle.errors.any? %>
+    <div class="alert alert-danger">
+    <h2>
+        <%= pluralize(appt.errors.count, "Error") %>
+        prohibited the vehicle update from being saved:
+    </h2>
+
+    <ul>
+        <% vehicle.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+    </div>
+<% end %>
 
 <div class='container'>
     <%= form_for vehicle do |f| %>

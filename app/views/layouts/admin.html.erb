@@ -36,7 +36,7 @@
               
             </li>
             <li class="nav-item">
-              <%= link_to "Inventory", vehicles_path, class: 'nav-link active' %>
+              <%= link_to "Inventory (Customer View)", vehicles_path, class: 'nav-link active' %>
             </li>
             <li class='nav-item'>
               <%= link_to "Admin Menu", admin_menus_path, class: 'nav-link active' %>
@@ -48,7 +48,7 @@
                 <%= link_to "Logged In As: #{current_employee.name} ", edit_admin_employee_path(current_employee), class: 'nav-link active' %>
               </li>
               <li class='nav-item'>
-                <%= button_to 'Logout', logout_path, method: 'delete', class: 'text-white btn btn-link active' %>
+                <%= button_to 'Logout', admin_logout_path, method: 'delete', class: 'text-white btn btn-link active' %>
               </li>
               <% else %>  
                 <li class='nav-item dropleft'>

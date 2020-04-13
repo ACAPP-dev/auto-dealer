@@ -25,7 +25,7 @@ class Admin::VehiclesController < ApplicationController
         #binding.pry
         @vehicle = Vehicle.new(vehicle_params)
         if @vehicle.save
-            redirect_to vehicle_path(@vehicle)
+            redirect_to vehicle_path(@vehicle), notice: "Vehicle was created!"
         else
             render :new
         end
@@ -33,7 +33,7 @@ class Admin::VehiclesController < ApplicationController
 
     def update
         if @vehicle.update(vehicle_params)
-            redirect_to vehicle_path(@vehicle)
+            redirect_to admin_vehicle_path(@vehicle), notice: "Updates were saved!!"
         else
             render :edit
         end

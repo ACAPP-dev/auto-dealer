@@ -15,7 +15,7 @@ class Admin::SessionsController < ApplicationController
     end
 
     def destroy
-        session.clear
+        session.delete(:empl_id)
         redirect_to admin_menus_path
     end
 

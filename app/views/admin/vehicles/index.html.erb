@@ -2,7 +2,6 @@
 <div class='container'>
     <div class='row row-cols-2'>
         <% @vehicles.each do |vehicle| %>
-            
             <div class='card'>
                 <%= link_to admin_vehicle_path(vehicle) do %>
                     <h4 align='center'>
