@@ -1,3 +1,42 @@
-admin menus index view
 
-admin menu listing...
+<div class='container w-75' align='center'>
+    <h4 align='center'>Manage Vehicle Inventory</h4>
+    <div class='row m-2'>
+        <%= link_to "Add Vehicle to Inventory", new_vehicle_path, class:'btn btn-success col-sm' %>
+        <%= link_to "View/Edit Vehicle Inventory", vehicles_path, class:'btn btn-warning col-sm' %>
+    </div>
+
+    <h4 align='center'>Manage Appointments</h4>
+    <div class='row m-2'>
+        <%= link_to "View/Edit Appointments", appointments_path, class:'btn btn-dark col-sm' %>
+        <%= link_to "Create Appointment", new_appointment_path, class:'btn btn-secondary col-sm' %>
+    </div>
+
+    <h4 align='center'>Vehicle Sales</h4>
+    <div class='row m-2'>
+        <%= link_to "Record Vehicle Sale", appointments_path, class:'btn btn-primary col-sm' %>
+        <%= link_to "Edit Vehicle Sales", new_appointment_path, class:'btn btn-info col-sm' %>
+        <%= link_to "View Vehicle Sales", new_appointment_path, class:'btn btn-light col-sm' %>
+    </div>
+
+    <h4 align='center'>Vehicle Makes & Models</h4>
+    <div class='row m-2'>
+        <%= link_to "Add Vehicle Make", appointments_path, class:'btn btn-primary col-sm' %>
+        <%= link_to "View/Edit Vehicle Makes", new_appointment_path, class:'btn btn-info col-sm' %>
+        <%= link_to "Add Vehicle Model", appointments_path, class:'btn btn-primary col-sm' %>
+        <%= link_to "View/Edit Vehicle Models", new_appointment_path, class:'btn btn-info col-sm' %>
+    </div>
+
+    <h4 align='center'>Employees</h4>
+    <div class='row m-2'>
+        <%= link_to "Add Employee", appointments_path, class:'btn btn-primary col-sm' %>
+        <%= link_to "View / Edit Employees", new_appointment_path, class:'btn btn-info col-sm' %>
+        
+    </div>
+
+    
+
+
+
+
+</div>
