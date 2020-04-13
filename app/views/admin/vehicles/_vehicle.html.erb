@@ -20,18 +20,14 @@
             <div class='col'>
             <%= f.fields_for :make do |make| %>
                 Select Make:
-                <%= make.collection_select :id, @makes, :id, :name, include_blank: "select one..." %>
+                <%= make.collection_select :id, @makes, :id, :name, include_blank: "Select one..." %>
             <% end %>
             </div>
             <div class='col'>
             <%= f.fields_for :carname do |model| %>
-                Select or Create Model:
-                <%= model.text_field :name, list: "carnames_autocomplete" %>
-                <datalist id="carnames_autocomplete">
-                    <% @carnames.each do |option_model| %>
-                        <option value="<%= option_model.name %>">
-                    <% end %>
-                </datalist>
+                Select Model:
+                <%= model.collection_select :id, @carnames, :id, :name, include_blank: "Select one..." %>
+                
             <% end %>
             </div>
         </div>
@@ -92,10 +88,7 @@
             <div class='col'>
                 <%= f.label :mileage_hwy %> <%= f.text_field :mileage_hwy %>
             </div>
-        </div>
-        <div class='form-row'>
-           <%= f.label :sold %> <%= f.text_field :sold %>
-        </div>               
+        </div>           
         <h4 align='center'>Link up to Ten Photos</h4>
         <%= f.fields_for :photos do |photo| %>
             <div class='form-row'>
