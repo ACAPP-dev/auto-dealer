@@ -14,25 +14,25 @@
 <% end %>
 
 <div class='container'>
-    <%= form_for vehicle do |f| %>
+    <%= form_with model: [:admin, vehicle], local: true do |f| %>
         <h4>Retail Price: <%= f.number_field :price %></h4>
         <div class='form-row'>
-            <div class='col'>
-                Select Make:
-                <%= f.collection_select :make_id, @makes, :id, :name, include_blank: "Select one..." %>
-                <%= f.fields_for :make do |make_fields| %>                
-                Or Create New One:
-                <%= make.text_field :name %>
+            Select Make:
+            <%= f.collection_select :make_id, @makes, :id, :name %>
+            Or Create New Make:
+            <%= f.fields_for :make do |add_make| %>
+                <%= add_make.text_field :name %>
             <% end %>
-            </div>
-            <div class='col'>
-            <%= f.fields_for :carname do |model| %>
-                Select Model:
-                <%= model.collection_select :id, @carnames, :id, :name, include_blank: "Select one..." %>
-                
-            <% end %>
-            </div>
         </div>
+        <div class='form-row'>
+            Select Model:
+            <%= f.collection_select :carname_id, @carnames, :id, :name %>
+            Or Create New Model:
+            <%= f.fields_for :carname do |add_model| %>
+                <%= add_model.text_field :name %>
+            <% end %>
+        </div>
+        
         <div class='form-row'>
             <div class='col'>
                 <%= f.label :year %> <%= f.text_field :year %>

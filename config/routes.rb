@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#create_fb'
 
   resources :vehicles, only: [:index, :show]
-  post '/vehicles', to: 'admin/vehicles#create'
-  patch '/vehicles/:id', to: 'admin/vehicles#update'
+  #post '/vehicles', to: 'admin/vehicles#create'
+  #patch '/vehicles/:id', to: 'admin/vehicles#update'
   
   resources :appointments
   resources :sessions

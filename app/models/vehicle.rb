@@ -7,7 +7,9 @@ class Vehicle < ApplicationRecord
     accepts_nested_attributes_for :carname
     accepts_nested_attributes_for :photos, reject_if: proc {|field| field[:link_to_photo].blank?}
 
-    validates :price, :make, :carname, :year, :mileage, :description, presence: true
+    validates :price, :year, :mileage, :description, presence: true
+
+    
 
     def self.search_vehicle(search)
         where("vehicle_search LIKE ?", "%#{search}%")

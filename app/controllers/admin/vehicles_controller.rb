@@ -12,7 +12,7 @@ class Admin::VehiclesController < ApplicationController
     def new
         @vehicle = Vehicle.new
         @vehicle.build_make
-        @vehicle.build_carname
+        #@vehicle.build_carname
         @makes = Make.all
         @carnames = Carname.all
         10.times do 
@@ -22,17 +22,18 @@ class Admin::VehiclesController < ApplicationController
 
     def create
         #raise params.inspect
-        #binding.pry
+        
         @vehicle = Vehicle.new(vehicle_params)
         if @vehicle.save
             redirect_to vehicle_path(@vehicle), notice: "Vehicle was created!"
         else
-            render :new
+            @makes = Make.all
+            @carnames = Carname.all
+            render :'new'
         end
     end
 
     def update
-        binding.pry
         if @vehicle.update(vehicle_params)
             redirect_to admin_vehicle_path(@vehicle), notice: "Updates were saved!!"
         else
@@ -49,6 +50,9 @@ class Admin::VehiclesController < ApplicationController
     def edit
         @makes = Make.all
         @carnames = Carname.all
+        2.times do 
+            @vehicle.photos.build 
+        end
     end
 
     def show
@@ -65,7 +69,9 @@ class Admin::VehiclesController < ApplicationController
     def vehicle_params
         params.require(:vehicle).permit(
             :make_id,
-            {carname_attributes: [:id, :name]},
+            {make_attributes: [:name]},
+            :carname_id,
+            {carname_attributes: [:name]},
             :year,
             :price,
             :doors,
