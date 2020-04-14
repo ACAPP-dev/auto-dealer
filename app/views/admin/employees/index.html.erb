@@ -9,7 +9,8 @@
                 <p>Position: <%= empl_account.emp_type %></p>
                 <p>Access Level: <%= empl_account.access_level %></p>
                 <p><%= link_to "View/Edit Details", edit_admin_employee_path(empl_account), class: 'btn btn-dark' %></p>
-            </div>
+                <%= button_to 'Delete Employee', admin_employee_path(empl_account), method: 'delete', class: 'btn btn-danger' %>
+                </div>
         </div>
     <% end %>
 </div>

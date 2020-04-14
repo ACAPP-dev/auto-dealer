@@ -1,42 +1,42 @@
 <div class='container'>
-    <div class='row d-flex justify-content-center align-items-center min-vh-50' >
+    <div class='row d-flex justify-content-center align-items-center min-vh-50 m-3' >
         <div class='card-deck'>
             <%= link_to vehicles_path, class:'card bg-secondary text-white' do %>
                 <div class="card-body">
-                    <h5 class="card-title">View Inventory</h5>
-                    <p class="card-text">View our entire inventory.</p>
+                    <h5 class="card-title" align='center'>View Vehicle Inventory</h5>
                 </div>
             <% end %>
 
             <% if logged_in? %>
                 <%= link_to customer_appointments_path(current_customer.id), class: 'card bg-danger text-white' do %>
-                    <div class="card-body">
-                        <h5 class="card-title">Appointments</h5>
+                    <div class="card-body" align='center'>
+                        <h5 class="card-title" >Appointments</h5>
                         <p class="card-text">Make a service appointment or view / change existing appointments.</p>
                     </div>
                 <% end %>
             <% else %>
                 <%= link_to login_path, class: 'card bg-danger text-white' do %>
-                    <div class="card-body">
+                    <div class="card-body" align='center'>
                         <h5 class="card-title">Appointments</h5>
                         <p class="card-text">Log-in to make a service appointment or view / change existing appointments.</p>
                     </div>
                 <% end %>   
             <% end %>
 
-            <%= link_to vehicles_path, class:'card bg-warning text-white' do %>
-                <div class="card-body">
+            <div class='card bg-warning text-white'>
+                <div class="card-body" align='center'>
                     <h5 class="card-title">About Us</h5>
-                    <p class="card-text">Hours of operation and contact info.</p>
+                    <p class="card-text">We are open from:<br> 9AM - 5PM <br> Mon-Sat</p>
                 </div>
-            <% end %>
-
-            <%= link_to vehicles_path, class:'card bg-success text-white' do %>
-                <div class="card-body">
+            </div>
+          
+            <div class='card bg-success text-white'>
+                <div class="card-body" align='center'>
                     <h5 class="card-title">Directions</h5>
-                    <p class="card-text">Map and directions to our dealership.</p>
+                    <p class="card-text">405 Fwy S at 55 Fwy</p>
                 </div>
-            <% end %>
+            </div>
+
         </div>
     </div>
 

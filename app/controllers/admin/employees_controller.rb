@@ -2,7 +2,7 @@ class Admin::EmployeesController < ApplicationController
         
     layout 'admin'
 
-    before_action :get_employee, only: [:show, :edit, :update, :destroy]
+    #before_action :get_employee, only: [:update, :destroy]
     # get_emplolyee method is in application_controller
     #before_action :skip_password_attribute, only: :update
 
@@ -27,7 +27,6 @@ class Admin::EmployeesController < ApplicationController
     def create
         @employee = Employee.new(empl_params)
         if @employee.save
-            session[:empl_id] = @employee.id
             redirect_to admin_employee_path(@employee), notice: "Successfully Created Account!"
         else
             render :new
@@ -38,6 +37,7 @@ class Admin::EmployeesController < ApplicationController
         if !valid_employee?
             redirect_to admin_login_path, alert: "Please login to view employee details."
         end
+        @employee = Employee.find(params[:id])
     end
 
     def edit
@@ -48,10 +48,12 @@ class Admin::EmployeesController < ApplicationController
                 redirect_to admin_employees_path, alert: "You do not have access to edit employees!"
             end
         end
+        @employee = Employee.find(params[:id])
     end
 
     def update
         if valid_employee?
+            @employee = Employee.find(params[:id])
             if @employee.update(skip_password_attribute)
                 redirect_to admin_employee_path(@employee), notice: "Successfully Updated Account!"
             else
@@ -64,6 +66,14 @@ class Admin::EmployeesController < ApplicationController
     end
 
     def destroy
+        if !valid_employee?
+            redirect_to admin_login_path, alert: "Please Login to remove employees!"
+        else
+            if @employee.access_level < 300
+                redirect_to admin_employees_path, alert: "You do not have access to remove employees!"
+            end
+        end
+        @employee = Employee.find(params[:id])
     end
 
     private
