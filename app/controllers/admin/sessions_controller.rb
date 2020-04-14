@@ -6,11 +6,11 @@ class Admin::SessionsController < ApplicationController
 
     def create
         @employee = Employee.find_by(email: params[:email])
-        if @employee && @employee.validate(params[:password])
+        if @employee && @employee.authenticate(params[:password])
             session[:empl_id] = @employee.id 
             redirect_to admin_menus_path, message: "Login Successful!"
         else
-            render :new
+            redirect_to admin_login_path, alert: "Invalid email or password!"
         end
     end
 

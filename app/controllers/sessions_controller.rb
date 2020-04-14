@@ -4,12 +4,11 @@ class SessionsController < ApplicationController
 
     def create
         @customer = Customer.find_by(email: params[:email])
-        #binding.pry
-        if @customer && @customer.validate(params[:password])
+        if @customer && @customer.authenticate(params[:password])
             session[:user_id] = @customer.id 
             redirect_to root_path, message: "Login Successful!"
         else
-            render :new
+            redirect_to login_path, alert: "Invalid email or password"
         end
     end
 
