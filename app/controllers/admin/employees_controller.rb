@@ -74,6 +74,8 @@ class Admin::EmployeesController < ApplicationController
             end
         end
         @employee = Employee.find(params[:id])
+        @employee.delete
+        redirect_to admin_employees_path, notice: "Employee was successfully deleted!"
     end
 
     private

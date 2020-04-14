@@ -16,7 +16,13 @@
                 <td><%= appt.appt_date %></td>
                 <td><%= Time.parse(appt.appt_time).strftime("%H:%M")%></td>
                 <td><%= appt.description %></td>
-                <td><%= appt.employee.name %></td>
+                <td>
+                    <% if appt.employee.nil? %>
+                        Employee Not Found
+                    <% else %>
+                        <%= appt.employee.name %>
+                    <% end %>
+                </td>
                 <td><%= appt.appt_type %></td>
                 <td><%= link_to "View/Edit/Cancel", edit_customer_appointment_path(appt.customer_id, appt.id), class: 'btn btn-primary' %></td>
             </tr>
