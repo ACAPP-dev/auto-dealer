@@ -10,6 +10,13 @@ class Admin::VehiclesController < ApplicationController
     end
 
     def new
+        if !valid_employee?
+            redirect_to admin_login_path, alert: "Please Login to add vehicles!"
+        else
+            if @employee.access_level < 200
+                redirect_to admin_employees_path, alert: "You do not have access to add vehicles!"
+            end
+        end
         @vehicle = Vehicle.new
         @vehicle.build_make
         @vehicle.build_carname
@@ -48,6 +55,13 @@ class Admin::VehiclesController < ApplicationController
     end
 
     def edit
+        if !valid_employee?
+            redirect_to admin_login_path, alert: "Please Login to edit vehicles!"
+        else
+            if @employee.access_level < 200
+                redirect_to admin_vehicles_path, alert: "You do not have access to edit vehicles!"
+            end
+        end
         @makes = Make.all
         @carnames = Carname.all
         2.times do 

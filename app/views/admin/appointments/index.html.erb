@@ -1,0 +1,23 @@
+
+<div class='container w-75'>
+    <h2 align='center'>All Appointments in Order by Date</h2>
+    <table class='table'>
+        <tr>
+            <th scope='col'>Date</th>
+            <th scope='col'>Time</th>
+            <th scope='col'>Description</th>
+            <th scope='col'>Advisor</th>
+            <th scope='col'>Type</th>
+        </tr>
+        
+        <% @appointments.each do |appt| %>
+            <tr>
+                <td><%= appt.appt_date %></td>
+                <td><%= Time.parse(appt.appt_time).strftime("%H:%M")%></td>
+                <td><%= appt.description %></td>
+                <td><%= appt.employee.name %></td>
+                <td><%= appt.appt_type %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>

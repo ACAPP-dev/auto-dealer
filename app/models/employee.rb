@@ -7,4 +7,6 @@ class Employee < ApplicationRecord
     validates :name, :email, presence: true
     validates :email, uniqueness: true
     validates_confirmation_of :password
+
+    
 end

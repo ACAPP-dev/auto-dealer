@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :vehicles
+    resources :appointments, only: [:index]
     resources :employees
     resources :sessions
     resources :menus, only: [:index]

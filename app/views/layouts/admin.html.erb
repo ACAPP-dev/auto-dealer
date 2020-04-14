@@ -51,24 +51,9 @@
                 <%= button_to 'Logout', admin_logout_path, method: 'delete', class: 'text-white btn btn-link active' %>
               </li>
               <% else %>  
-                <li class='nav-item dropleft'>
-                  <button class='btn btn-primary dropdown-toggle' id='dropdownMenuLink' type='button' data-toggle="dropdown" data-target="#navbarDropdown" aria-haspopup="true" aria-expanded="false">
-                    Login
-                  </button>
-                  <div class='dropdown-menu' id='navbarDropdown' aria-labelledby='dropdownMenuLink'>
-                    <%= link_to "Login Via Website", login_path, class: 'dropdown-item' %>
-                    <%= link_to "Login Via Facebook", fb_login_path, class: 'dropdown-item' %>
-                  </div>
+                <li class='nav-item'>
+                    <%= link_to "Employee Login", admin_login_path, class: 'nav-link active' %>
                 </li>
-                <li class='nav-item dropleft'>
-                  <button class='btn btn-primary dropdown-toggle' id='dropdownMenuLink' type='button' data-toggle="dropdown" data-target="#navbarDropdown2" aria-haspopup="true" aria-expanded="false">
-                    Create Account
-                  </button>
-                  <div class='dropdown-menu' id='navbarDropdown2' aria-labelledby='dropdownMenuLink'>
-                    <%= link_to "Create Account", new_customer_path, class: 'dropdown-item' %> 
-                    <%= link_to "Login Via Facebook", fb_login_path, class: 'dropdown-item' %>
-                  </div> 
-              </li>
                 <% end %>
             </li>
             

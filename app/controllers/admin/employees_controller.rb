@@ -7,15 +7,24 @@ class Admin::EmployeesController < ApplicationController
     #before_action :skip_password_attribute, only: :update
 
     def new
+        if !valid_employee?
+            redirect_to admin_login_path, alert: "Please Login to add employees!"
+        else
+            if @employee.access_level < 200
+                redirect_to admin_employees_path, alert: "You do not have access to create new employees!"
+            end
+        end
         @employee = Employee.new
     end
 
     def index
+        if !valid_employee?
+            redirect_to admin_login_path, alert: "Please Login to View Employee Listing."
+        end
         @employees = Employee.all 
     end
 
     def create
-        binding.pry
         @employee = Employee.new(empl_params)
         if @employee.save
             session[:empl_id] = @employee.id
@@ -26,9 +35,19 @@ class Admin::EmployeesController < ApplicationController
     end
 
     def show
+        if !valid_employee?
+            redirect_to admin_login_path, alert: "Please login to view employee details."
+        end
     end
 
     def edit
+        if !valid_employee?
+            redirect_to admin_login_path, alert: "Please Login to edit employees!"
+        else
+            if @employee.access_level < 200
+                redirect_to admin_employees_path, alert: "You do not have access to edit employees!"
+            end
+        end
     end
 
     def update
@@ -60,5 +79,5 @@ class Admin::EmployeesController < ApplicationController
     def empl_params
         params.require(:employee).permit(:name, :address, :city, :state, :zip, :email, :password, :password_confirmation, :phone, :emp_type, :access_level)
     end  
-    end
+end
 
