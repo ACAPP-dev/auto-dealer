@@ -2,10 +2,6 @@ class Admin::EmployeesController < ApplicationController
         
     layout 'admin'
 
-    #before_action :get_employee, only: [:update, :destroy]
-    # get_emplolyee method is in application_controller
-    #before_action :skip_password_attribute, only: :update
-
     def new
         if !valid_employee?
             redirect_to admin_login_path, alert: "Please Login to add employees!"

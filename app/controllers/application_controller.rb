@@ -4,10 +4,9 @@ class ApplicationController < ActionController::Base
         render :'/home'
     end
 
-    
     def get_customer
         if session[:user_id]
-           @customer || @customer = Customer.find(session[:user_id])
+            @customer || @customer = Customer.find(session[:user_id])
         else
             @customer = nil
         end
@@ -25,15 +24,13 @@ class ApplicationController < ActionController::Base
 
     def get_employee
         if session[:empl_id]
-           @employee = Employee.find(session[:empl_id])
+            @employee = Employee.find(session[:empl_id])
         else
             @employee = nil
         end
     end
 
     def valid_employee?
-        if get_employee
-            @employee.id == session[:empl_id]
-        end
+        !!get_employee
     end
 end

@@ -28,8 +28,6 @@ class Admin::VehiclesController < ApplicationController
     end
 
     def create
-        #raise params.inspect
-        
         @vehicle = Vehicle.new(vehicle_params)
         if @vehicle.save
             redirect_to vehicle_path(@vehicle), notice: "Vehicle was created!"
