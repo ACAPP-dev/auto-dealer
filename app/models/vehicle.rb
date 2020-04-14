@@ -9,8 +9,22 @@ class Vehicle < ApplicationRecord
 
     validates :price, :year, :mileage, :description, presence: true
 
-    
+    def make_attributes=(make_hash)
+        unless make_hash[:name].empty?
+            make_instance = Make.find_or_create_by(make_hash)
+            self.make = make_instance
+            self.save
+        end 
+    end
 
+    def carname_attributes=(name_hash)
+        unless name_hash[:name].empty?
+            model_instance = Carname.find_or_create_by(name_hash)
+            self.carname = model_instance
+            self.save
+        end 
+    end
+    
     def self.search_vehicle(search)
         where("vehicle_search LIKE ?", "%#{search}%")
     end

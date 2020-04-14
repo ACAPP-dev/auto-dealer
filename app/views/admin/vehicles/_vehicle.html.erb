@@ -18,18 +18,18 @@
         <h4>Retail Price: <%= f.number_field :price %></h4>
         <div class='form-row'>
             Select Make:
-            <%= f.collection_select :make_id, @makes, :id, :name %>
+            <%= f.collection_select :make_id, @makes, :id, :name, include_blank: 'Select...' %>
             Or Create New Make:
             <%= f.fields_for :make do |add_make| %>
-                <%= add_make.text_field :name %>
+                <%= add_make.text_field :name, value: "" %>
             <% end %>
         </div>
         <div class='form-row'>
             Select Model:
-            <%= f.collection_select :carname_id, @carnames, :id, :name %>
+            <%= f.collection_select :carname_id, @carnames, :id, :name, include_blank: 'Select...'  %>
             Or Create New Model:
             <%= f.fields_for :carname do |add_model| %>
-                <%= add_model.text_field :name %>
+                <%= add_model.text_field :name, value: "" %>
             <% end %>
         </div>
         

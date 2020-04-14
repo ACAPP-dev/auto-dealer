@@ -12,7 +12,7 @@ class Admin::VehiclesController < ApplicationController
     def new
         @vehicle = Vehicle.new
         @vehicle.build_make
-        #@vehicle.build_carname
+        @vehicle.build_carname
         @makes = Make.all
         @carnames = Carname.all
         10.times do 
