@@ -1,9 +1,7 @@
 class CustomersController < ApplicationController
 
     before_action :get_customer, only: [:show, :edit, :update, :destroy]
-    # get_customer method is in application_controller
-    #before_action :skip_password_attribute, only: :update
-
+    
     def new
         @customer = Customer.new
     end
@@ -30,7 +28,6 @@ class CustomersController < ApplicationController
                 redirect_to customer_path(@customer), notice: "Successfully Updated Account!"
             else
                 render :edit
-
             end
         else
             redirect_to root_path, alert: "Please login to update your account."

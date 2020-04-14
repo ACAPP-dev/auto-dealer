@@ -14,9 +14,4 @@ module SessionsHelper
     def current_employee
         @employee = Employee.find_by(id: session[:empl_id])
     end
-
-
-
-
-
 end

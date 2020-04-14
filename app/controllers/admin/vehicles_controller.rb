@@ -83,7 +83,6 @@ class Admin::VehiclesController < ApplicationController
         @options = @vehicle.options.split(", ")
     end
 
-
     private
 
     def find_vehicle

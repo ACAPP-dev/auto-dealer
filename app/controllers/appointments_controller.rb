@@ -1,9 +1,6 @@
 class AppointmentsController < ApplicationController
-    
-    #before_action :get_customer, only: [:new, :index, :show, :edit, :update, :destroy]
-    # get_customer method is in application_controller
 
-   before_action :get_appointment, only: [:show, :edit, :update, :destroy]
+before_action :get_appointment, only: [:show, :edit, :update, :destroy]
 
     def new
         if nested_valid_customer?(params[:customer_id].to_i)
@@ -49,7 +46,7 @@ class AppointmentsController < ApplicationController
             get_customer
             @employees = Employee.all
             if !@appointment = @customer.appointments.find_by(id: params[:id])
-               redirect_to root_path, alert: "Please login to change appointments."
+                redirect_to root_path, alert: "Please login to change appointments."
             end
         else
             redirect_to root_path, alert: "Please login to change appointments."
@@ -81,8 +78,6 @@ class AppointmentsController < ApplicationController
         end
     end
 
-
-   
     private
     
     def get_appointment

@@ -29,7 +29,7 @@
     <div class='row form-group'>
         <span>Date: <%= f.text_field :appt_date, type: 'date' %></span>
         <span>Time: <%= f.text_field :appt_time, type: 'time',
-         value: Time.parse(appt.appt_time).strftime("%H:%M"), min: "09:00", max: "18:00" %></span>
+        value: Time.parse(appt.appt_time).strftime("%H:%M"), min: "09:00", max: "18:00" %></span>
     </div>
 
     <div class='row form-group'>

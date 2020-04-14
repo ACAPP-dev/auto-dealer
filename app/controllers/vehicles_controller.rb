@@ -2,7 +2,6 @@ class VehiclesController < ApplicationController
     before_action :find_vehicle, only: [:show]
 
     def index
-        #binding.pry
         if !params[:search].blank?
             @vehicles = Vehicle.search_vehicle(params[:search].downcase)
         elsif !params[:make].blank?

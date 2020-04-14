@@ -264,8 +264,8 @@ e1 = Employee.create(
     password: "1111",
     password_confirmation: "1111",
     phone: "444-444-4444",
-    emp_type: "service",
-    access_level: "10"
+    emp_type: "Service",
+    access_level: "100"
 )
 
 e2 = Employee.create(
@@ -275,11 +275,11 @@ e2 = Employee.create(
     state: "CA",
     zip: "91111",
     email: "andrew@gmail.com",
-    password: "1234",
+    password: "1111",
     password_confirmation: "1234",
     phone: "321-321-8888",
-    emp_type: "manager",
-    access_level: "100"
+    emp_type: "Manager",
+    access_level: "300"
 )
 
 e3 = Employee.create(
@@ -292,8 +292,8 @@ e3 = Employee.create(
     password: "1111",
     password_confirmation: "1111",
     phone: "666-666-6666",
-    emp_type: "sales",
-    access_level: "50"
+    emp_type: "Sales",
+    access_level: "200"
 )
 
 # Create Appointments
@@ -331,6 +331,3 @@ appt3 = c2.appointments.build(
 )
 appt3.employee = e1
 appt3.save
-
-# Create Vehicle Purchases (todo)
-# Create Vehicle Sales (todo)

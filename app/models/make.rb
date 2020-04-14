@@ -5,5 +5,4 @@ class Make < ApplicationRecord
         includes(:vehicles).where.not(vehicles: {id: nil})
     end
 
-
 end
