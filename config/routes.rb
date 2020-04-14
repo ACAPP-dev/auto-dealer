@@ -23,17 +23,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :vehicles
-    resources :makes
-    resources :carnames
-    resources :photos
     resources :employees
     resources :sessions
     resources :menus, only: [:index]
-
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-
   end
 
 end

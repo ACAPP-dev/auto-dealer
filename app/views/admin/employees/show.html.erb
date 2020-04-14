@@ -1,0 +1,29 @@
+<div class='container w-50'>
+
+    <h2 align='center'>Account Details</h2>
+
+    
+    <p>Name: <%= @employee.name %></p>
+
+    <p>Address: <%= @employee.address %></p>
+   
+    <p>
+        City: <%= @employee.city %>
+        State: <%= @employee.state %>
+        Zip: <%= @employee.zip %>
+    </p>
+
+    <p>
+        Email: <%= @employee.email %>
+        Phone: <%= @employee.phone %>
+    </p>
+
+    <p>
+    Account Type: <%= @employee.emp_type %>
+    Access Level: <%= @employee.access_level %>
+</p>
+
+
+    <%= link_to "Edit Account Details or Change Password", edit_admin_employee_path(@employee), class: 'btn btn-primary' %>
+    
+</div>
