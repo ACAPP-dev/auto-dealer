@@ -16,7 +16,7 @@ class Admin::SessionsController < ApplicationController
 
     def destroy
         session.delete(:empl_id)
-        redirect_to admin_menus_path
+        redirect_to admin_menus_path, message: "Logout Successful!"
     end
 
 end
