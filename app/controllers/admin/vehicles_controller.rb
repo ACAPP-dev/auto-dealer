@@ -32,6 +32,7 @@ class Admin::VehiclesController < ApplicationController
     end
 
     def update
+        binding.pry
         if @vehicle.update(vehicle_params)
             redirect_to admin_vehicle_path(@vehicle), notice: "Updates were saved!!"
         else
@@ -63,7 +64,7 @@ class Admin::VehiclesController < ApplicationController
 
     def vehicle_params
         params.require(:vehicle).permit(
-            {make_attributes: [:id, :name]},
+            :make_id,
             {carname_attributes: [:id, :name]},
             :year,
             :price,
