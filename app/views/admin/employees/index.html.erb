@@ -1,9 +1,15 @@
 <h2 align = 'center'>Listing of Employees</h2>
 
-<% @employees.each do |empl_account| %>
-
-    <%= empl_account.name %>
-
-
-
-<% end %>
+<div class='container' align='center'>
+    <% @employees.each do |empl_account| %>
+        <div class='card m-3 inline-block' style='width: 15rem;'>
+            <div class='card-body'>
+                <h5 class='card-title'><%= empl_account.name %></h5>
+                <p>Email: <%= empl_account.email %></p>
+                <p>Position: <%= empl_account.emp_type %></p>
+                <p>Access Level: <%= empl_account.access_level %></p>
+                <p><%= link_to "View/Edit Details", edit_admin_employee_path(empl_account), class: 'btn btn-dark' %></p>
+            </div>
+        </div>
+    <% end %>
+</div>

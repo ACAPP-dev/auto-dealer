@@ -18,31 +18,26 @@
 <div class='container-md w-75 bg-light rounded'>
 
     <%= form_with model: [:admin, empl], local: true do |f| %>
-            <span class='row col'>Full Name: <%= f.text_field :name, class: 'form-control'%></span>
-            <p class='row col'>Street Address: <%= f.text_field :address, class: 'form-control' %></p>
-            <div class='row'>
-                <p class='col'>City: <%= f.text_field :city %></p>
-                <p class='col'>State: <%= f.text_field :state %></p>
-                <p class='col'>Zip: <%= f.text_field :zip %></p>
-            </div>
-            <div class='row'>
-                <span class='col'>Email: <%= f.text_field :email %></span>
-                <p class='col'>Phone: <%= f.text_field :phone %></p>
-            </div>
-            <div class='row'>
-                <span class='col'>Password: <%= f.password_field :password %></span>
-                <span class='col'>Re-enter Password: <%= f.password_field :password_confirmation %></span>
-            </div>
-            <div class='row'>
-            <span class='col'>Type: <%= f.select :emp_type, [["Sales", 1], ["Service", 2], ["Manager", 3]] %></span>
+        <span class='row col'>Full Name: <%= f.text_field :name, class: 'form-control'%></span>
+        <p class='row col'>Street Address: <%= f.text_field :address, class: 'form-control' %></p>
+        <div class='row'>
+            <p class='col'>City: <%= f.text_field :city %></p>
+            <p class='col'>State: <%= f.text_field :state %></p>
+            <p class='col'>Zip: <%= f.text_field :zip %></p>
+        </div>
+        <div class='row'>
+            <span class='col'>Email: <%= f.text_field :email %></span>
+            <p class='col'>Phone: <%= f.text_field :phone %></p>
+        </div>
+        <div class='row'>
+            <span class='col'>Password: <%= f.password_field :password %></span>
+            <span class='col'>Re-enter Password: <%= f.password_field :password_confirmation %></span>
+        </div>
+        <div class='row'>
+            <span class='col'>Type: <%= f.select :emp_type, [["Sales", 'Sales'], ["Service", 'Service'], ["Manager", 'Manager']] %></span>
             <span class='col'>Access Level: <%= f.select :access_level, [["100 - View Only", 100], ["200 - Create & Edit", 200], ["300 - All Access", 300]] %></span>
         </div>
-        
-
-
-
-            <%= f.submit class: 'row col btn btn-primary' %>
-        </div>
+        <%= f.submit class: 'row col btn btn-primary' %>
     <% end %>
 </div>
 </body>
