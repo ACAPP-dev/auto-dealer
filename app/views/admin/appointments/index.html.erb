@@ -8,6 +8,7 @@
             <th scope='col'>Description</th>
             <th scope='col'>Advisor</th>
             <th scope='col'>Type</th>
+            <th scope='col'>Action</th>
         </tr>
         
         <% @appointments.each do |appt| %>
@@ -23,6 +24,7 @@
                     <% end %>
                 </td>
                 <td><%= appt.appt_type %></td>
+                <td><%= button_to "Delete Appointment", admin_appointment_path(appt), method: 'delete', class: 'btn btn-danger' %></td>
             </tr>
         <% end %>
     </table>

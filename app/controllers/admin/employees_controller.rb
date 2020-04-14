@@ -68,14 +68,18 @@ class Admin::EmployeesController < ApplicationController
     def destroy
         if !valid_employee?
             redirect_to admin_login_path, alert: "Please Login to remove employees!"
-        else
+        elsif
             if @employee.access_level < 300
                 redirect_to admin_employees_path, alert: "You do not have access to remove employees!"
             end
+        else
+            @employee = Employee.find(params[:id])
+            if @employee.delete
+                redirect_to admin_employees_path, notice: "Employee was successfully deleted!"
+            else
+                redirect_to admin_employees_path, alert: "Unable to delete employee."
+            end
         end
-        @employee = Employee.find(params[:id])
-        @employee.delete
-        redirect_to admin_employees_path, notice: "Employee was successfully deleted!"
     end
 
     private

@@ -53,15 +53,16 @@ class Admin::VehiclesController < ApplicationController
     def destroy
         if !valid_employee?
             redirect_to admin_login_path, alert: "Please Login to delete vehicles!"
-        else
+        elsif
             if @employee.access_level < 300
-                redirect_to admin_employees_path, alert: "You do not have access to delete vehicles!"
+                redirect_to admin_vehicles_path, alert: "You do not have access to delete vehicles!"
             end
-        end
-        if @vehicle.delete
-            redirect_to admin_vehicles_path, notice: "Vehicle successfully deleted!"
         else
-            redirect_to admin_vehicles_path, alert: "Unable to delete vehicle."
+            if @vehicle.delete
+                redirect_to admin_vehicles_path, notice: "Vehicle successfully deleted!"
+            else
+                redirect_to admin_vehicles_path, alert: "Unable to delete vehicle."
+            end
         end
     end
 
