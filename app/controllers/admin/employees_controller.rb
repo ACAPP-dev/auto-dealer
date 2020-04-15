@@ -21,11 +21,15 @@ class Admin::EmployeesController < ApplicationController
     end
 
     def create
-        @employee = Employee.new(empl_params)
-        if @employee.save
-            redirect_to admin_employee_path(@employee), notice: "Successfully Created Account!"
+        if !valid_employee?
+            redirect_to admin_employees_path, alert: "Invalid Request!"
         else
-            render :new
+            @employee = Employee.new(empl_params)
+            if @employee.save
+                redirect_to admin_employee_path(@employee), notice: "Successfully Created Account!"
+            else
+                render :new
+            end
         end
     end
 

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery with: :exception
 
     def home
         render :'/home'
@@ -31,6 +32,8 @@ class ApplicationController < ActionController::Base
     end
 
     def valid_employee?
-        !!get_employee
+        if get_employee
+            @employee.id == session[:empl_id]
+        end
     end
 end

@@ -28,23 +28,31 @@ class Admin::VehiclesController < ApplicationController
     end
 
     def create
-        @vehicle = Vehicle.new(vehicle_params)
-        if @vehicle.save
-            redirect_to vehicle_path(@vehicle), notice: "Vehicle was created!"
+        if !valid_employee?
+            redirect_to admin_vehicles_path, alert: "Invalid Post Request!"
         else
-            @makes = Make.all
-            @carnames = Carname.all
-            render :'new'
+            @vehicle = Vehicle.new(vehicle_params)
+            if @vehicle.save
+                redirect_to vehicle_path(@vehicle), notice: "Vehicle was created!"
+            else
+                @makes = Make.all
+                @carnames = Carname.all
+                render :'new'
+            end
         end
     end
 
     def update
-        if @vehicle.update(vehicle_params)
-            redirect_to admin_vehicle_path(@vehicle), notice: "Updates were saved!!"
+        if !valid_employee?
+            redirect_to admin_vehicles_path, alert: "Invalid Patch Request!"
         else
-            @makes = Make.all
-            @carnames = Carname.all
-            render :edit
+            if @vehicle.update(vehicle_params)
+                redirect_to admin_vehicle_path(@vehicle), notice: "Updates were saved!!"
+            else
+                @makes = Make.all
+                @carnames = Carname.all
+                render :edit
+            end
         end
     end
 
