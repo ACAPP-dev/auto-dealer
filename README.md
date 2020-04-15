@@ -2,7 +2,7 @@
 
 Website to view an auto dealer's vehicle inventory and make sales or service appointments at that dealership.
 
-### Features
+## Features
 
 ### Customers
 <ul>
@@ -32,7 +32,7 @@ My blog also talks about this project here: NEED
 
 Written with Ruby version 2.6.3p62 using Ruby on Rails Framework.
 
-Uses a Sqlite3 database.  To refresh or set up the database, use the following steps.
+Uses a Sqlite3 database.  To refresh or set up the database, use the following steps:
 
     $ rails db:drop
 

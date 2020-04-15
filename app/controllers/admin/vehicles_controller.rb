@@ -32,6 +32,8 @@ class Admin::VehiclesController < ApplicationController
             redirect_to admin_vehicles_path, alert: "Invalid Post Request!"
         else
             @vehicle = Vehicle.new(vehicle_params)
+            binding.pry
+            @vehicle.vehicle_search = @vehicle.year + " " + @vehicle.make.name + " " + @vehicle.carname.name
             if @vehicle.save
                 redirect_to vehicle_path(@vehicle), notice: "Vehicle was created!"
             else
@@ -47,6 +49,8 @@ class Admin::VehiclesController < ApplicationController
             redirect_to admin_vehicles_path, alert: "Invalid Patch Request!"
         else
             if @vehicle.update(vehicle_params)
+                @vehicle.vehicle_search = @vehicle.year + " " + @vehicle.make.name + " " + @vehicle.carname.name
+                @vehicle.save
                 redirect_to admin_vehicle_path(@vehicle), notice: "Updates were saved!!"
             else
                 @makes = Make.all
