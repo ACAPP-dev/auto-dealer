@@ -5,6 +5,7 @@
         <tr>
             <th scope='col'>Date</th>
             <th scope='col'>Time</th>
+            <th scope='col'>Customer</th>
             <th scope='col'>Description</th>
             <th scope='col'>Advisor</th>
             <th scope='col'>Type</th>
@@ -15,6 +16,7 @@
             <tr>
                 <td><%= appt.appt_date %></td>
                 <td><%= Time.parse(appt.appt_time).strftime("%H:%M")%></td>
+                <td><%= appt.customer.name %></td>
                 <td><%= appt.description %></td>
                 <td>
                     <% if appt.employee.nil? %>

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
         @customer = Customer.find_by(email: params[:email])
         if @customer && @customer.authenticate(params[:password])
             session[:user_id] = @customer.id 
-            redirect_to root_path, message: "Login Successful!"
+            redirect_to root_path, notice: "Login Successful!"
         else
             redirect_to login_path, alert: "Invalid email or password"
         end

@@ -217,7 +217,7 @@ p3.save
 # Create Customers
 
 c1 = Customer.create(
-    name: "Sharon Li",
+    name: "Sharon Lad",
     address: "3451 W. 35th Street",
     city: "Los Angeles",
     state: "CA",
@@ -241,7 +241,7 @@ c2 = Customer.create(
 )
 
 c3 = Customer.create(
-    name: "Jessica Zhang",
+    name: "Jessica Zuck",
     address: "451 W 235 St, Apt #515",
     city: "Baltimore",
     state: "MD",
@@ -276,7 +276,7 @@ e2 = Employee.create(
     zip: "91111",
     email: "andrew@gmail.com",
     password: "1111",
-    password_confirmation: "1234",
+    password_confirmation: "1111",
     phone: "321-321-8888",
     emp_type: "Manager",
     access_level: "300"
