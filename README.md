@@ -24,9 +24,9 @@ Website to view an auto dealer's vehicle inventory and make sales or service app
     <li>View all appointments in order by date</li>
 </ul>
 
-Please use the following link to see an overview of the webapp on YouTube: NEED
+Please use the following link to see an overview of the webapp on YouTube: https://youtu.be/GnppcsiBYc4
 
-My blog also talks about this project here: NEED
+My blog also talks about this project here: https://acapp-dev.github.io/third_project_-_auto_dealership_website_with_ruby_on_rails
 
 ## Installation
 
