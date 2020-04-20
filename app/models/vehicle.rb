@@ -11,6 +11,9 @@ class Vehicle < ApplicationRecord
 
     scope :older, -> {where("year<2000")}
     scope :newer, -> {where("year>2015")}
+    scope :order_by_price, -> { order(price: :asc)}
+    scope :order_by_make, -> { joins(:make).merge(Make.order(name: :asc))}
+    scope :order_by_year, -> {order(year: :desc)}
 
     def make_attributes=(make_hash)
         unless make_hash[:name].empty?
@@ -40,15 +43,5 @@ class Vehicle < ApplicationRecord
         where(carname: model_id)
     end
 
-    def self.order_by_price
-        order(price: :asc)
-    end
-
-    def self.order_by_make
-        joins(:make).merge(Make.order(name: :asc))
-    end
-
-    def self.order_by_year
-        order(year: :desc)
-    end
+    
 end
