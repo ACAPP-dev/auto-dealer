@@ -42,6 +42,5 @@ class Vehicle < ApplicationRecord
     def self.by_model(model_id)
         where(carname: model_id)
     end
-
-    
+   
 end
