@@ -9,6 +9,9 @@ class Vehicle < ApplicationRecord
 
     validates :price, :year, :mileage, :description, presence: true
 
+    scope :older, -> {where("year<2000")}
+    scope :newer, -> {where("year>2015")}
+
     def make_attributes=(make_hash)
         unless make_hash[:name].empty?
             make_instance = Make.find_or_create_by(make_hash)

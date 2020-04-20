@@ -19,6 +19,12 @@ class VehiclesController < ApplicationController
             else
                 @vehicles = Vehicle.all
             end
+        elsif !params[:select].blank?
+            if params[:select] == 'older'
+                @vehicles = Vehicle.older
+            elsif params[:select] == 'newer'
+                @vehicles = Vehicle.newer
+            end
         else
             @vehicles = Vehicle.all
         end
