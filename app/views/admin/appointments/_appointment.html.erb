@@ -15,7 +15,7 @@
 <% end %>
 
 <div class='container w-50'>
-<%= form_for appt, url: admin_appointments_path do |f| %>
+<%= form_for appt, url: url_for([:admin, @appointment]) do |f| %>
     
     <%= hidden_field_tag 'employee_id', appt.employee.id %>
     <div class='row form-group'>
@@ -33,7 +33,8 @@
     </div>
 
     <div class='row form-group'>
-        <p>Select Customer: <%= f.collection_select :customer_id, @customers, :id, :name %></p>
+        <p class='col'>Select Customer: <%= f.collection_select :customer_id, @customers, :id, :name %></p>
+        <p class='col'>Select Employee: <%= f.collection_select :employee_id, @employees, :id, :name %></p>
     </div>
 
     <%= f.submit class: 'btn btn-primary' %>

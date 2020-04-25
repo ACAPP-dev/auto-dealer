@@ -1,8 +1,8 @@
 
 <div class='container w-75'>
     <h2 align='center'>All Appointments in Order by Date</h2>
-    <table class='table'>
-        <tr>
+    <table class='table table-striped'>
+        <tr align='center'>
             <th scope='col'>Date</th>
             <th scope='col'>Time</th>
             <th scope='col'>Customer</th>
@@ -26,7 +26,10 @@
                     <% end %>
                 </td>
                 <td><%= appt.appt_type %></td>
-                <td><%= button_to "Delete Appointment", admin_appointment_path(appt), method: 'delete', class: 'btn btn-danger' %></td>
+                <td>
+                    <%= link_to "Edit Appointment", edit_admin_appointment_path(appt), class: 'btn btn-block btn-secondary m-2' %>
+                    <%= button_to "Delete Appointment", admin_appointment_path(appt), method: 'delete', class: 'btn btn-block btn-danger m-2' %>
+                </td>
             </tr>
         <% end %>
     </table>
