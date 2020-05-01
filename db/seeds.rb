@@ -117,9 +117,6 @@ ferrari.save
 ferrari3.vehicle_search = "2007 Ferrari F430"
 ferrari3.save
 
-
-
-
 avent = Vehicle.create(
     year: "2019",
     price: 559900,
@@ -208,11 +205,6 @@ p3.photos.build(description: "Thumbnail", link_to_photo: "/images/porsche9.jpg")
 porsche.save
 p3.vehicle_search = "2018 Porsche Panamera"
 p3.save
-
-
-
-
-
 
 # Create Customers
 
@@ -331,3 +323,19 @@ appt3 = c2.appointments.build(
 )
 appt3.employee = e1
 appt3.save
+
+# Create vehicle sales
+
+sale1 = e2.vehicle_sales.build(
+    note: "Sold to great customer at 10% profit",
+    cost: 100000,
+    price: 129990,
+    sale_date: Date.new(2020, 4, 17)
+)
+
+sale1.vehicle = ferrari2
+ferrari2.sold = true
+ferrari2.save
+sale1.save
+c1.vehicle_sales << sale1
+c1.save

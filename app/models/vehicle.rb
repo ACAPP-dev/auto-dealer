@@ -2,6 +2,7 @@ class Vehicle < ApplicationRecord
     belongs_to :make
     belongs_to :carname
     has_many :photos
+    has_one :vehicle_sale
     
     accepts_nested_attributes_for :make
     accepts_nested_attributes_for :carname
@@ -43,4 +44,15 @@ class Vehicle < ApplicationRecord
         where(carname: model_id)
     end
    
+    def self.sold
+        where(sold: true)
+    end
+
+    def self.not_sold
+        where(sold: false)
+    end
+
+    def vehicle_select
+        "Vehicle ID: #{id} | #{year} | #{make.name} | #{carname.name}"
+    end
 end

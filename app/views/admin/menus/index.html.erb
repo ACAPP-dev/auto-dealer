@@ -3,9 +3,12 @@
     <h4 align='center'>Manage Vehicle Inventory</h4>
     <div class='row m-2'>
         <%= link_to "Add Vehicle to Inventory", new_admin_vehicle_path, class:'btn btn-success col-sm m-2' %>
-        <%= link_to "View/Edit Vehicle Inventory", admin_vehicles_path, class:'btn btn-warning col-sm m-2' %>
+        <%= link_to "View/Edit Vehicle Inventory", admin_vehicles_path, class:'btn btn-success col-sm m-2' %>
     </div>
-
+    <div class='row m-2'>
+        <%= link_to "View All Sold Vehicles", admin_vehicle_sales_path, class:'btn btn-warning col-sm m-2' %>
+        <%= link_to "Enter Vehicle Sale", new_admin_vehicle_sale_path, class:'btn btn-warning col-sm m-2' %>
+    </div>
     <h4 align='center'>Manage Employees</h4>
     <div class='row m-2'>
         <%= link_to "Add Employee", new_admin_employee_path, class:'btn btn-dark col-sm m-2' %>

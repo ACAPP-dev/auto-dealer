@@ -1,0 +1,55 @@
+<% if sale.errors.any? %>
+    <div class="alert alert-danger">
+    <h2>
+        <%= pluralize(sale.errors.count, "Error") %>
+        prohibited the sale update from being saved:
+    </h2>
+
+    <ul>
+        <% sale.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+    </div>
+<% end %>
+
+<div class='container'>
+    <%= form_with model: [:admin, sale], local: true do |f| %>
+
+        <div class='form-row'>
+            Select Vehicle:
+            <%= f.collection_select :vehicle_id, @vehicles, :id, :vehicle_select %>
+        </div>
+        <br>
+        <div class='form-row'>
+            <div class='col'>
+                Select Customer:
+                <%= f.collection_select :customer_id, @customers, :id, :name %>
+            </div>
+            <div class='col'>
+                Select Employee:
+                <%= f.collection_select :employee_id, @employees, :id, :name %>
+            </div>
+        </div>
+        <br>
+        <div class='form-row'>
+            <div class='col'>
+                <%= f.label :price %> <%= f.number_field :price %>
+            </div>
+            <div class='col'>
+                <%= f.label :cost %> <%= f.number_field :cost %>
+            </div>
+            <div class='col form-group'>
+                <%= f.label :sale_date %> <%= f.date_field :sale_date, class: 'form-control' %>
+            </div>
+        </div>
+        <div class='form-group'>
+            <%= f.label :note %>
+            <%= f.text_area :note, class: 'form-control' %>
+        </div>
+        
+        <div class='form-row'>
+            <%= f.submit class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>

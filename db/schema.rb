@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_164559) do
+ActiveRecord::Schema.define(version: 2020_05_01_205720) do
 
   create_table "appointments", force: :cascade do |t|
     t.string "appt_type"
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 2020_04_02_164559) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "vehicle_sales", force: :cascade do |t|
+    t.string "note"
+    t.float "cost"
+    t.float "price"
+    t.string "sale_date"
+    t.integer "customer_id"
+    t.integer "employee_id"
+    t.integer "vehicle_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "vehicles", force: :cascade do |t|
     t.integer "make_id"
     t.integer "carname_id"
@@ -94,6 +106,8 @@ ActiveRecord::Schema.define(version: 2020_04_02_164559) do
     t.string "type"
     t.string "options"
     t.string "vehicle_search"
+    t.boolean "sold", default: false
+    t.integer "vehicle_sale_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

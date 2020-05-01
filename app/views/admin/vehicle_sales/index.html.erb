@@ -1,0 +1,27 @@
+
+<div class='container'>
+    <div class='row row-cols-2'>
+        <% @vehicles.each do |vehicle| %>
+            <div class='card'>
+                <%= link_to admin_vehicle_path(vehicle) do %>
+                    <h4 align='center'>
+                        <%= vehicle.year %>
+                        <%= vehicle.make.name %>
+                        <%= vehicle.carname.name %>
+                    </h4>
+                <% end %>
+                <% if vehicle.photos.first %>    
+                    <img class='img-fluid' src=<%= vehicle.photos.first.link_to_photo %> alt=<%= vehicle.photos.first.description %>>
+                <% else %>
+                    <img class='img-fluid' src='/images/andrew.jpg' alt='Missing Photo'>
+                <% end %>
+                <div class='card-body'>
+                <h5>
+                    <strong>Price:</strong> <%= "$" + vehicle.price.to_s(:delimited) %>
+                    <strong> Mileage:</strong> <%= vehicle.mileage %>
+                </h5>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

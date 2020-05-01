@@ -20,6 +20,8 @@ class CreateVehicles < ActiveRecord::Migration[6.0]
       t.string :type 
       t.string :options
       t.string :vehicle_search
+      t.boolean :sold, default: false
+      t.integer :vehicle_sale_id
       t.timestamps
     end
   end
